@@ -2,7 +2,7 @@ package Command;
 
 import java.io.File;
 
-import Main.FtpRequest;
+import Request.FtpRequest;
 
 public class CommandList extends Command{
 

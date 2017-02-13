@@ -1,6 +1,6 @@
 package Command;
 
-import Main.FtpRequest;
+import Request.FtpRequest;
 
 public class CommandQuit extends Command{
 
