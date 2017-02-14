@@ -1,0 +1,17 @@
+package Command;
+
+import java.io.File;
+
+import Request.FtpRequest;
+
+public class CommandCwd extends Command {
+	
+	public CommandCwd(FtpRequest ftp, String filename){
+		super(ftp);
+		process(filename);
+	}
+	
+	public void process(String filename){
+		
+	}
+}

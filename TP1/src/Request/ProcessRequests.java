@@ -3,6 +3,7 @@ package Request;
 import java.io.File;
 
 import Command.Command;
+import Command.CommandCwd;
 import Command.CommandList;
 import Command.CommandPass;
 import Command.CommandQuit;
@@ -65,5 +66,10 @@ public class ProcessRequests {
 	public void processQUIT(){
 		@SuppressWarnings("unused")
 		Command quit = new CommandQuit(ftp);
+	}
+	
+	public void processCwd(String filename){
+		@SuppressWarnings("unused")
+		CommandCwd cwd = new CommandCwd(ftp, filename);
 	}
 }

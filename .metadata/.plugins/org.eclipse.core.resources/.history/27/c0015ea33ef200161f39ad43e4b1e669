@@ -1,0 +1,39 @@
+package Command;
+
+import java.io.File;
+
+import Request.FtpRequest;
+
+public class CommandCwd extends Command {
+	
+	public CommandCwd(FtpRequest ftp, String filename){
+		super(ftp);
+		process(filename);
+	}
+	
+	public void process(String filename){
+		switch(filename){
+			case ".": ftp.send(212, ftp.getRepertoire().toString());
+					  break;
+			case "..": if(ftp.getRepertoire().getParentFile().equals("servorFile")) 
+							send(553, "Répertoire racine, commande refusée");
+						else{
+							ftp.setRepertoire(
+									new File(ftp.getRepertoire().toString().substring(0, ftp.getRepertoire().toString().lastIndexOf("\\" ))
+											));
+							ftp.send(212, ftp.getRepertoire().toString());
+						}
+						break;
+			default: for(String temp : ftp.getRepertoire().list()){
+						if(temp.equals(filename)){
+							ftp.setRepertoire(new File(ftp.getRepertoire().toString() + "\\" + filename));
+							ftp.send(212, ftp.getRepertoire().toString());
+							break;
+						}	
+					}
+			send(553, "Répertoire inconnu, commande refusée");
+					
+				
+		}
+	}
+}

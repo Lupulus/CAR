@@ -12,9 +12,11 @@ public class CommandQuit extends Command{
 	public void process(){
 		super.send(221, "Deconnexion");
 		try{
-			ftp.getIn().close();
-			ftp.getOut().close();
-			ftp.getSocket().close();
+			if(ftp.getIsConnected()){
+				ftp.getIn().close();
+				ftp.getOut().close();
+				ftp.send(221, "Connection closed");
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}

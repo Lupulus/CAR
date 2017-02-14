@@ -15,6 +15,7 @@ import Command.CommandRetr;
 import Command.CommandStor;
 import Command.CommandUser;
 
+@SuppressWarnings("unused")
 public class FtpRequest {
 	
 	private String tab[];
@@ -124,4 +125,15 @@ public class FtpRequest {
 		this.isConnected = setter;
 	}
 	
+	public boolean getIsConnected(){
+		return this.isConnected;
+	}
+	
+	public File getRepertoire(){
+		return this.repertoire;
+	}
+	
+	public void setRepertoire(File repertoire){
+		this.repertoire = repertoire;
+	}
 }

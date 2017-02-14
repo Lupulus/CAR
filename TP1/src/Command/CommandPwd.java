@@ -11,6 +11,6 @@ public class CommandPwd extends Command{
 	}
 	
 	public void process(File repertoire){
-
+		ftp.send(257, repertoire.toString());
 	}
 }
