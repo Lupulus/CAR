@@ -1,0 +1,11 @@
+package Command;
+
+import Request.FtpRequest;
+
+public class CommandPasv extends Command {
+	
+	public CommandPasv(FtpRequest ftp){
+		super(ftp);
+		ftp.getServerSocket() = new ServerSocket(0);
+	}
+}

@@ -1,25 +1,23 @@
 package Command;
 
-import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.Charset;
 
 import Request.FtpRequest;
 
 public class CommandStor extends Command{
 
-	public CommandStor(FtpRequest ftp, File repertoire, String filename) {
+	public CommandStor(FtpRequest ftp,String filename) {
 		super(ftp);
-		process(repertoire, filename);
+		process(filename);
 	}
 	
-	public void process(File repertoire, String filename){
-		File file = new File(repertoire.getPath() + "/" + filename);
+	public void process(String filename){
+		File file = new File(ftp.getCurrentDirectory().getAbsolutePath() + "/" + filename);
 		//System.out.println(file.toString());
 		try(FileOutputStream os = new FileOutputStream(file)) {
 			this.receiveFromClient(os);
@@ -29,31 +27,24 @@ public class CommandStor extends Command{
 		}
 	}
 	
-	public String receiveStringFromClient(Charset charset) {
-		return new String(receiveBytesFromClient(), charset);
-	}
-
-	public byte[] receiveBytesFromClient() {
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		receiveFromClient(stream);
-		return stream.toByteArray();
-	}
 	
 	public void receiveFromClient(OutputStream data) {
 		InputStream stream = null;
+		DataInputStream dataB = null;
 		try {
 			// début d'utilisation de la connexion
 			ftp.send(125, "Data connection already open; transfer starting.");
 
-			stream = ftp.getSocket().getInputStream();
+			dataB = new DataInputStream(ftp.getSocket().getInputStream());
 			
 			int n;
 			byte[] buffer = new byte[1024];
-			while((n = stream.read(buffer)) > -1) {
+			while((n = dataB.read(buffer)) > -1) {
 				data.write(buffer, 0, n);
 			}
 			
-			
+			dataB.close();
+			data.close();
 			
 			ftp.send(226,"Data transfered succesfully. Data connection closed.");
 		} catch(IOException  e) {

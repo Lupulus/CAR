@@ -1,16 +1,15 @@
 package Command;
 
-import java.io.File;
 
 import Request.FtpRequest;
 
 public class CommandPwd extends Command{
-	public CommandPwd(FtpRequest ftp, File repertoire) {
+	public CommandPwd(FtpRequest ftp) {
 		super(ftp);
-		process(repertoire);
+		process();
 	}
 	
-	public void process(File repertoire){
-		ftp.send(257, repertoire.toString());
+	public void process(){
+		ftp.send(257, ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")));
 	}
 }

@@ -6,33 +6,36 @@ import Request.FtpRequest;
 
 public class CommandCwd extends Command {
 	
-	public CommandCwd(FtpRequest ftp, String filename){
+	public CommandCwd(FtpRequest ftp){
 		super(ftp);
-		process(filename);
 	}
 	
-	public void process(String filename){
+	public boolean process(String filename){
 		switch(filename){
-			case ".": ftp.send(212, ftp.getRepertoire().toString());
-					  break;
-			case "..": if(ftp.getRepertoire().getParentFile().equals("servorFile")) 
-							send(553, "Répertoire racine, commande refusée");
-						else{
-							ftp.setRepertoire(
-									new File(ftp.getRepertoire().toString().substring(0, ftp.getRepertoire().toString().lastIndexOf("\\" ))
+			case ".": @SuppressWarnings("unused")
+					  CommandPwd pwd = new CommandPwd(ftp);
+				      return true;
+					  
+			case "..": if(ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")).equals("/servorFile")){
+							send(553, "Repertoire racine, commande refusee");
+							return false;
+					   }else{
+							ftp.setCurrentDirectory(
+									new File(ftp.getCurrentDirectory().toString().substring(0, ftp.getCurrentDirectory().toString().lastIndexOf("\\" ))
 											));
-							ftp.send(212, ftp.getRepertoire().toString());
+							ftp.send(212, ftp.getCurrentDirectory().toString());
+							return true;
 						}
-						break;
-			default: for(String temp : ftp.getRepertoire().list()){
+						//System.out.println(ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")));
+			default: for(String temp : ftp.getCurrentDirectory().list()){
 						if(temp.equals(filename)){
-							ftp.setRepertoire(new File(ftp.getRepertoire().toString() + "\\" + filename));
-							ftp.send(212, ftp.getRepertoire().toString());
-							break;
+							ftp.setCurrentDirectory(new File(ftp.getCurrentDirectory().toString() + "\\" + filename));
+							ftp.send(212, ftp.getCurrentDirectory().toString());
+							return true;
 						}	
-					}
-					send(550, "Répertoire inconnu, commande refusée");
-					break;
+					 }
+					 send(550, "Repertoire inconnu, commande refusee");
+					 return false;
 				
 		}
 	}

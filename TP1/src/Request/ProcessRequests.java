@@ -1,11 +1,13 @@
 package Request;
 
-import java.io.File;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 import Command.Command;
 import Command.CommandCwd;
 import Command.CommandList;
 import Command.CommandPass;
+import Command.CommandPwd;
 import Command.CommandQuit;
 import Command.CommandRetr;
 import Command.CommandStor;
@@ -13,6 +15,8 @@ import Command.CommandUser;
 
 public class ProcessRequests {
 	private FtpRequest ftp;
+	private ServerSocket servSoc = null;
+	private Socket soc = null;
 	
 	public ProcessRequests(FtpRequest ftp){
 		this.ftp = ftp;
@@ -33,13 +37,8 @@ public class ProcessRequests {
 		}
 	}
 	
-	public void processPAVD(){
-		Thread t = new Thread(){
-			public void runnable(){
-				return;
-				//DataSocket ds = attendreCX();
-			};
-		};
+	public void processPASV(){
+		
 		ftp.send(227, "");
 		ftp.setIsPassive(true);
 	}
@@ -48,19 +47,19 @@ public class ProcessRequests {
 		ftp.setIsPassive(false);
 	}
 	
-	public void processRETR(File repertoire, String filename){
+	public void processRETR(String filename){
 		@SuppressWarnings("unused")
-		Command retr = new CommandRetr(ftp, repertoire, filename);
+		Command retr = new CommandRetr(ftp, filename);
 	}
 	
-	public void processSTOR(File repertoire, String filename){
+	public void processSTOR(String filename){
 		@SuppressWarnings("unused")
-		Command stor = new CommandStor(ftp, repertoire, filename);
+		Command stor = new CommandStor(ftp, filename);
 	}
 	
-	public void processLIST(File repertoire){
+	public void processLIST(){
 		@SuppressWarnings("unused")
-		Command list = new CommandList(ftp, repertoire);
+		Command list = new CommandList(ftp);
 	}
 	
 	public void processQUIT(){
@@ -69,7 +68,39 @@ public class ProcessRequests {
 	}
 	
 	public void processCwd(String filename){
+		CommandCwd cwd = new CommandCwd(ftp);
+		for( String temp: filename.split("/")){
+			if(!cwd.process(temp))
+				break;
+		}
+	}
+	
+	public void processPwd(){
 		@SuppressWarnings("unused")
-		CommandCwd cwd = new CommandCwd(ftp, filename);
+		CommandPwd pwd = new CommandPwd(ftp);
+	}
+	
+	
+	/**
+	 * 
+	 * Setter et Getter
+	 * 
+	 */
+	public ServerSocket getServerSocket(){
+		return this.servSoc;
+	}
+	
+	public void setServerSocket(ServerSocket servSoc){
+		this.servSoc = servSoc;
+	}
+	
+	public Socket getSocket(){
+		return this.soc;
+	}
+	
+	public void setSocket(Socket soc){
+		this.soc = soc;
 	}
 }
+
+

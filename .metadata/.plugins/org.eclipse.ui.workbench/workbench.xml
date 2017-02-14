@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="21" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="795" maximized="true" width="1018" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -37,41 +37,66 @@
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandRetr.java" partName="CommandRetr.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandRetr.java" title="CommandRetr.java" tooltip="TP1/src/Command/CommandRetr.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandRetr.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="416" selectionTopPixel="240"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="694" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FtpRequest.java" partName="FtpRequest.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Request/FtpRequest.java" title="FtpRequest.java" tooltip="TP1/src/Request/FtpRequest.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Request/FtpRequest.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1209" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="695" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ProcessRequests.java" partName="ProcessRequests.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Request/ProcessRequests.java" title="ProcessRequests.java" tooltip="TP1/src/Request/ProcessRequests.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ProcessRequests.java" partName="ProcessRequests.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Request/ProcessRequests.java" title="ProcessRequests.java" tooltip="TP1/src/Request/ProcessRequests.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Request/ProcessRequests.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="640" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="546" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Serveur.java" partName="Serveur.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Main/Serveur.java" title="Serveur.java" tooltip="TP1/src/Main/Serveur.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Main/Serveur.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="558" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="642" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandStor.java" partName="CommandStor.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandStor.java" title="CommandStor.java" tooltip="TP1/src/Command/CommandStor.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandStor.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="829" selectionTopPixel="112"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1097" selectionTopPixel="112"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPass.java" partName="CommandPass.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandPass.java" title="CommandPass.java" tooltip="TP1/src/Command/CommandPass.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandPass.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="155" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPwd.java" partName="CommandPwd.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandPwd.java" title="CommandPwd.java" tooltip="TP1/src/Command/CommandPwd.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandPwd.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="244" selectionTopPixel="0"/>
-</editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandList.java" partName="CommandList.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandList.java" title="CommandList.java" tooltip="TP1/src/Command/CommandList.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandList.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="278" selectionOffset="112" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="249" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandCwd.java" partName="CommandCwd.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandCwd.java" title="CommandCwd.java" tooltip="TP1/src/Command/CommandCwd.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandCwd.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="145" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPwd.java" partName="CommandPwd.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandPwd.java" title="CommandPwd.java" tooltip="TP1/src/Command/CommandPwd.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandPwd.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="4" selectionOffset="165" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandCdup.java" partName="CommandCdup.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandCdup.java" title="CommandCdup.java" tooltip="TP1/src/Command/CommandCdup.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandCdup.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="153" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandUser.java" partName="CommandUser.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandUser.java" title="CommandUser.java" tooltip="TP1/src/Command/CommandUser.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandUser.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="295" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPasv.java" partName="CommandPasv.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandPasv.java" title="CommandPasv.java" tooltip="TP1/src/Command/CommandPasv.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandPasv.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="350" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPort.java" partName="CommandPort.java" path="/home/m1/laval/Documents/M1S2/CARbis/CAR/TP1/src/Command/CommandPort.java" title="CommandPort.java" tooltip="TP1/src/Command/CommandPort.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TP1/src/Command/CommandPort.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="390" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -109,6 +134,7 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings (5 items)"/>
 <category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="951" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
@@ -178,43 +204,30 @@
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="topLeft">
-<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@7e97551f" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@7e97551f" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.6596386" ratioLeft="438" ratioRight="226" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<info folder="true" part="bottomRight" ratio="0.6596386" ratioLeft="438" ratioRight="226" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.TaskList" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="332" ratioRight="332" relationship="4" relative="topLeft">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="332" ratioRight="332" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -268,9 +281,9 @@
 <new_wizard_action id="org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.RunToLine"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
-<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
@@ -334,165 +347,164 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandRetr.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Request/FtpRequest.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Request/ProcessRequests.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Request/Connection.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Main/Serveur.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandRetr.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandStor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandPass.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandPwd.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandList.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Main/Serveur.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandPASV.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandPort.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TP1/src/Command/CommandPasv.java"/>
 </editors>
-<item historyLabel="ProcessRequests.java" index="2">
-<position/>
+<item historyLabel="CommandRetr.java" index="2">
+<position info="not_deleted" x="996" y="0"/>
 </item>
-<item historyLabel="Connection.java" index="3">
-<position info="not_deleted" x="47" y="0"/>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="715" y="0"/>
 </item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="538" y="0"/>
+<item historyLabel="CommandRetr.java" index="2">
+<position info="not_deleted" x="694" y="0"/>
 </item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="629" y="0"/>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="715" y="0"/>
 </item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="963" y="11"/>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="1013" y="0"/>
 </item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="985" y="12"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="1074" y="0"/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="2098" y="0"/>
-</item>
-<item historyLabel="ProcessRequests.java" index="2">
-<position/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="2098" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="1074" y="0"/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="2098" y="0"/>
-</item>
-<item historyLabel="Serveur.java" index="4">
-<position info="not_deleted" x="558" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="1074" y="0"/>
-</item>
-<item historyLabel="ProcessRequests.java" index="2">
-<position/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="2098" y="0"/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="3054" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="825" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="827" y="0"/>
-</item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="3058" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="827" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="478" y="63"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="1439" y="58"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="605" y="0"/>
-</item>
-<item historyLabel="Connection.java" index="3">
-<position info="not_deleted" x="50" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="825" y="0"/>
-</item>
-<item historyLabel="ProcessRequests.java" index="2">
-<position/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="825" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1740" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1171" y="11"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1148" y="12"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1205" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="1063" y="70"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="416" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1698" y="0"/>
-</item>
-<item historyLabel="CommandRetr.java" index="0">
-<position info="not_deleted" x="416" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1738" y="0"/>
-</item>
-<item historyLabel="CommandPass.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ProcessRequests.java" index="2">
-<position info="not_deleted" x="640" y="0"/>
-</item>
-<item historyLabel="CommandPass.java" index="6">
-<position info="not_deleted" x="155" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
-<position info="not_deleted" x="1738" y="0"/>
-</item>
-<item historyLabel="CommandStor.java" index="5">
+<item historyLabel="CommandStor.java" index="3">
 <position info="not_deleted" x="829" y="0"/>
 </item>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="800" y="15"/>
+</item>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="829" y="0"/>
+</item>
+<item historyLabel="CommandStor.java" index="3">
+<position info="not_deleted" x="1097" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="891" y="0"/>
+</item>
+<item historyLabel="FtpRequest.java" index="0">
+<position info="not_deleted" x="1552" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="897" y="0"/>
+</item>
+<item historyLabel="CommandPASV.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="184" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="255" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="351" y="0"/>
+</item>
+<item historyLabel="FtpRequest.java" index="0">
+<position info="not_deleted" x="1552" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="897" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="351" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="238" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="897" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="1820" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="1900" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="238" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="357" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="740" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="357" y="0"/>
+</item>
+<item historyLabel="FtpRequest.java" index="0">
+<position info="not_deleted" x="1552" y="0"/>
+</item>
 <item historyLabel="Serveur.java" index="4">
-<position info="not_deleted" x="558" y="0"/>
+<position info="not_deleted" x="642" y="0"/>
 </item>
-<item historyLabel="ProcessRequests.java" index="2">
-<position info="not_deleted" x="640" y="0"/>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="357" y="0"/>
 </item>
-<item historyLabel="FtpRequest.java" index="1">
-<position info="not_deleted" x="1209" y="0"/>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="306" y="0"/>
 </item>
-<item historyLabel="CommandPwd.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="294" y="0"/>
 </item>
-<item historyLabel="CommandList.java" index="8">
-<position info="not_deleted" x="112" y="278"/>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="321" y="0"/>
 </item>
-<item active="true" historyLabel="CommandPwd.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="351" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="351" y="0"/>
+</item>
+<item historyLabel="FtpRequest.java" index="0">
+<position info="not_deleted" x="1552" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="2030" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="357" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="2030" y="0"/>
+</item>
+<item historyLabel="CommandPasv.java" index="7">
+<position info="not_deleted" x="350" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="740" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="268" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="417" y="0"/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position/>
+</item>
+<item historyLabel="CommandPort.java" index="6">
+<position info="not_deleted" x="390" y="0"/>
+</item>
+<item historyLabel="ProcessRequests.java" index="1">
+<position info="not_deleted" x="2030" y="0"/>
+</item>
+<item historyLabel="FtpRequest.java" index="0">
+<position info="not_deleted" x="695" y="0"/>
+</item>
+<item active="true" historyLabel="ProcessRequests.java" index="1">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -500,12 +512,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="right"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -513,16 +519,30 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandList.java" tooltip="TP1/src/Command/CommandList.java">
-<persistable path="/TP1/src/Command/CommandList.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPort.java" tooltip="TP1/src/Command/CommandPort.java">
+<persistable path="/TP1/src/Command/CommandPort.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPASV.java" tooltip="TP1/src/Command/CommandPASV.java">
+<persistable path="/TP1/src/Command/CommandPASV.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandUser.java" tooltip="TP1/src/Command/CommandUser.java">
+<persistable path="/TP1/src/Command/CommandUser.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandCdup.java" tooltip="TP1/src/Command/CommandCdup.java">
+<persistable path="/TP1/src/Command/CommandCdup.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPwd.java" tooltip="TP1/src/Command/CommandPwd.java">
 <persistable path="/TP1/src/Command/CommandPwd.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandCwd.java" tooltip="TP1/src/Command/CommandCwd.java">
+<persistable path="/TP1/src/Command/CommandCwd.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandList.java" tooltip="TP1/src/Command/CommandList.java">
+<persistable path="/TP1/src/Command/CommandList.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CommandPass.java" tooltip="TP1/src/Command/CommandPass.java">
 <persistable path="/TP1/src/Command/CommandPass.java"/>

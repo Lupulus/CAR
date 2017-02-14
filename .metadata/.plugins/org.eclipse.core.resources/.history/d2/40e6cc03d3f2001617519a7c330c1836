@@ -1,0 +1,8 @@
+package Command;
+
+public class CommandPort {
+
+}
+//serverSocket sur port 0 new ServerSocket(0) --> le crée aléatoirement
+
+//ici on récup IP et port puis on crée une socket pour

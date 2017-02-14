@@ -12,13 +12,13 @@ import Request.FtpRequest;
 
 public class CommandRetr extends Command{
 
-	public CommandRetr(FtpRequest ftp, File repertoire, String filename) {
+	public CommandRetr(FtpRequest ftp, String filename) {
 		super(ftp);
-		process(repertoire, filename);
+		process(filename);
 	}
 	
-	public void process(File repertoire, String filename){
-		File file = new File(repertoire.getPath() + "/" + filename);
+	public void process(String filename){
+		File file = new File(ftp.getCurrentDirectory().getAbsolutePath() + "/" + filename);
 		
 		try(FileInputStream is = new FileInputStream(file)) {
 			this.transmitToClient(is);
@@ -29,14 +29,6 @@ public class CommandRetr extends Command{
 	   
 	}
 	
-	
-	public void transmitToClient(String data, Charset charset) {
-		transmitToClient(data.getBytes(charset));
-	}
-	
-	public void transmitToClient(byte[] data) {
-		transmitToClient(new ByteArrayInputStream(data));
-	}
 	
 	public void transmitToClient(InputStream data) {
 		OutputStream stream = null;
@@ -52,13 +44,12 @@ public class CommandRetr extends Command{
 				stream.write(buffer, 0, n);
 			}
 			
-			stream.close();
-			
+						
 			ftp.send(226, "Data transfered succesfully. Data connection closed.");
 		} catch(IOException e) {
 			ftp.send(426, "Connection closed, transfert aborted");
 		}
-		try { if (stream != null) stream.close(); } catch(IOException e) { }
+		//try { if (stream != null) stream.close(); } catch(IOException e) { }
 	}
 	
 }

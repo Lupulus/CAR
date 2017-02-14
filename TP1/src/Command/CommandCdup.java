@@ -6,6 +6,7 @@ public class CommandCdup extends Command{
 	
 	public CommandCdup(FtpRequest ftp){
 		super(ftp);
-		new CommandCwd(ftp, "..");
+		CommandCwd cwd = new CommandCwd(ftp);
+		cwd.process("..");
 	}
 }

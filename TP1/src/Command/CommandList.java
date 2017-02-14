@@ -6,13 +6,13 @@ import Request.FtpRequest;
 
 public class CommandList extends Command{
 
-	public CommandList(FtpRequest ftp, File repertoire) {
+	public CommandList(FtpRequest ftp) {
 		super(ftp);
-		process(repertoire);
+		process();
 	}
 	
-	public void process(File repertoire){
-		String[] files = repertoire.list();
+	public void process(){
+		String[] files = ftp.getCurrentDirectory().list();
 		for(int i = 0; i<files.length; i++){
 			ftp.getOut().println(files[i]);
 			ftp.getOut().flush();

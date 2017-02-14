@@ -23,13 +23,14 @@ public class FtpRequest {
 	private boolean isPassive;
 	private BufferedReader in;
 	private PrintWriter out;
-	private File repertoire;
+	private File currentDirectory, homeDirectory;
 	private Socket s;
 	private ProcessRequests request;
 	
 	public FtpRequest(Socket s) {
 		this.s = s;
-		repertoire = new File(System.getProperty("user.dir") + "/servorFile");
+		homeDirectory = new File(System.getProperty("user.dir") + "/servorFile");
+		currentDirectory = homeDirectory; 
 		request = new ProcessRequests(this);
 		try{
 			this.in =  new BufferedReader( new InputStreamReader(s.getInputStream()));
@@ -54,16 +55,20 @@ public class FtpRequest {
 							case "USER" : 
 							case "PASS" : send(2, "Erreur déjà connecté");
 							              break;
-							case "PAVD" : request.processPAVD();
+							case "PAVD" : request.processPASV();
 							              break;
 							case "PORT" : request.processPORT();
 							              break;
-							case "RETR" : request.processRETR(repertoire, tab[1]);
+							case "RETR" : request.processRETR(tab[1]);
 							              break;
-							case "LIST" : request.processLIST(repertoire);
+							case "LIST" : request.processLIST();
 							              break;
-							case "STOR" : request.processSTOR(repertoire, tab[1]);
+							case "STOR" : request.processSTOR( tab[1]);
 							              break;
+							case "PWD"  : request.processPwd();
+										  break;
+							case "CWD"  : request.processCwd(tab[1]);
+							  			  break;
 							case "QUIT" : request.processQUIT();
 							              break;
 							default     : //renvoyer une erreur
@@ -129,11 +134,19 @@ public class FtpRequest {
 		return this.isConnected;
 	}
 	
-	public File getRepertoire(){
-		return this.repertoire;
+	public File getCurrentDirectory(){
+		return this.currentDirectory;
 	}
 	
-	public void setRepertoire(File repertoire){
-		this.repertoire = repertoire;
+	public void setCurrentDirectory(File repertoire){
+		this.currentDirectory = repertoire;
+	}
+	
+	public File getHomeDirectory(){
+		return this.homeDirectory;
+	}
+	
+	public ProcessRequests getRequest(){
+		return this.request;
 	}
 }

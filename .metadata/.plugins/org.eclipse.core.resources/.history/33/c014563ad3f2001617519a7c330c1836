@@ -1,0 +1,18 @@
+package Command;
+
+import Request.FtpRequest;
+
+public class CommandPort extends Command{
+	
+	public CommandPort(FtpRequest ftp, String ip, String port){
+		super(ftp);
+		process(ip, port);
+	}
+	
+	public void process(Sting ip, String port){
+		
+	}
+}
+//serverSocket sur port 0 new ServerSocket(0) --> le crée aléatoirement
+
+//ici on récup IP et port puis on crée une socket pour
