@@ -9,7 +9,18 @@ public class CommandPasv extends Command {
 	
 	public CommandPasv(FtpRequest ftp) throws IOException{
 		super(ftp);
-		ftp.getRequest().setServerSocket(new ServerSocket(0));
-		ftp.getRequest().setSocket(ftp.getRequest().getServerSocket().accept());
+	}
+	
+	@Override
+	public boolean process(String arg){
+		try {
+			ftp.getRequest().setServerSocket(new ServerSocket(0,1,ftp.getSocket().getLocalAddress()));
+			ftp.getRequest().setSocket(ftp.getRequest().getServerSocket().accept());
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

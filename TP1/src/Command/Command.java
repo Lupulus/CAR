@@ -13,5 +13,9 @@ public abstract class Command {
 	public void send(int number, String text){
 		ftp.send(number, text);
 	}
+	
+	public boolean process(String arg){
+		return true;
+	}
 
 }

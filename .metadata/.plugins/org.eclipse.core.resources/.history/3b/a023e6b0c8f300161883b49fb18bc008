@@ -1,0 +1,10 @@
+package Command;
+
+import Request.FtpRequest;
+
+public class CommandMkd extends Command{
+	
+	public CommnandMkd(FtpRequest ftp){
+		super(ftp);
+	}
+}

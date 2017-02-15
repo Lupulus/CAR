@@ -11,19 +11,20 @@ import Request.FtpRequest;
 
 public class CommandStor extends Command{
 
-	public CommandStor(FtpRequest ftp,String filename) {
+	public CommandStor(FtpRequest ftp) {
 		super(ftp);
-		process(filename);
 	}
 	
-	public void process(String filename){
-		File file = new File(ftp.getCurrentDirectory().getAbsolutePath() + "/" + filename);
+	@Override
+	public boolean process(String arg){
+		File file = new File(ftp.getCurrentDirectory().getAbsolutePath() + "/" + arg);
 		//System.out.println(file.toString());
 		try(FileOutputStream os = new FileOutputStream(file)) {
 			this.receiveFromClient(os);
+			return true;
 		} catch(IOException e) {
 			ftp.send(426, "Connection closed, transfert aborted");
-			return;
+			return false;
 		}
 	}
 	
@@ -35,7 +36,7 @@ public class CommandStor extends Command{
 			// début d'utilisation de la connexion
 			ftp.send(125, "Data connection already open; transfer starting.");
 
-			dataB = new DataInputStream(ftp.getSocket().getInputStream());
+			dataB = new DataInputStream(ftp.getRequest().getSocket().getInputStream());
 			
 			int n;
 			byte[] buffer = new byte[1024];

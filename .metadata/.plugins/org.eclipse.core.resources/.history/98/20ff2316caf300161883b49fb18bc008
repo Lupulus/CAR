@@ -1,0 +1,38 @@
+package Command;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+
+import Request.FtpRequest;
+
+public class CommandDele extends Command{
+	
+	public CommandDele(FtpRequest ftp){
+		super(ftp);
+	}
+	
+	@Override 
+	public boolean process(String arg){
+		
+			File target = getFileFromArgument(connection, arg);
+			
+			if (target.equals(connection.getCanonicalRootDirectoryFile())) {
+				connection.sendResponse(new Response550FileError("Can't remove root directory"));
+				return;
+			}
+			
+			try {
+			    Files.delete(target.toPath());
+			    connection.sendResponse(new Response250FileActionCompleted("File deleted successfully"));
+			} catch (NoSuchFileException e) {
+				connection.sendResponse(new Response550FileError("File not found"));
+			} catch (DirectoryNotEmptyException e) {
+				connection.sendResponse(new Response550FileError("Directory not empty"));
+			} catch (IOException e) {
+				connection.sendResponse(new Response550FileError("Can't remove file: "+e.getMessage()));
+	}
+	}
+}

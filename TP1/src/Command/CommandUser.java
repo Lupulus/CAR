@@ -4,16 +4,19 @@ import Request.FtpRequest;
 
 public class CommandUser extends Command{
 	
-	public CommandUser(FtpRequest ftp, String name) {
+	public CommandUser(FtpRequest ftp) {
 		super(ftp);
-		process(name);
 	}
 	
-	public void process(String name){
-		if(name.equals("laval")){
+	@Override
+	public boolean process(String arg){
+		if(ftp.getUsers().containsKey(arg)){
 			super.send(331, "Please specify password");
+			ftp.setConnectedUser(arg);
+			return true;
 		}else{
 			//envoyer erreur
+			return false;
 		}
 	}
 

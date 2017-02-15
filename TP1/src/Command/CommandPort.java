@@ -4,22 +4,36 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import Request.FtpRequest;
 
 public class CommandPort extends Command{
 	
-	public CommandPort(FtpRequest ftp, String ip, String port){
+	public CommandPort(FtpRequest ftp){
 		super(ftp);
-		try {
-			process(ip, port);
-		} catch (NumberFormatException | UnknownHostException | IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
-	public void process(String ip, String port) throws NumberFormatException, UnknownHostException, IOException{
-		Socket s = new Socket(InetAddress.getByName(ip),Integer.parseInt(port));
+	@Override
+	public boolean process(String arg){
+		Integer[] infos = Arrays.stream(arg.split(","))
+				.map(Integer::parseInt)
+				.toArray(Integer[]::new);
+		
+		String host = Arrays.stream(infos, 0, 4)
+				.map(e -> e.toString())
+				.collect(Collectors.joining("."));
+		int port = infos[4] * 256 + infos[5];
+		
+		try {
+			ftp.getRequest().setSocket(new Socket(InetAddress.getByName(host),port));
+			return true;
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return false;
+		} 
 	}
 }
 //serverSocket sur port 0 new ServerSocket(0) --> le crée aléatoirement

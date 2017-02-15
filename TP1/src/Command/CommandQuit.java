@@ -6,19 +6,19 @@ public class CommandQuit extends Command{
 
 	public CommandQuit(FtpRequest ftp) {
 		super(ftp);
-		process();
 	}
 	
-	public void process(){
+	@Override
+	public boolean process(String arg){
 		super.send(221, "Deconnexion");
 		try{
-			if(ftp.getIsConnected()){
-				ftp.getIn().close();
-				ftp.getOut().close();
-				ftp.send(221, "Connection closed");
-			}
+			ftp.getIn().close();
+			ftp.getOut().close();
+			ftp.send(221, "Connection closed");
+			return true;		
 		}catch(Exception e){
 			e.printStackTrace();
+			return false;
 		}
 	}
 

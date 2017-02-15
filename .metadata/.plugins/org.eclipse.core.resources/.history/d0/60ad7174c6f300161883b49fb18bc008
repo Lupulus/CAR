@@ -1,0 +1,23 @@
+package Command;
+
+import Request.FtpRequest;
+
+public class CommandUser extends Command{
+	
+	public CommandUser(FtpRequest ftp, String name) {
+		super(ftp);
+		process(name);
+	}
+	
+	@Override
+	public boolean process(String arg){
+		if(arg.equals("laval")){
+			super.send(331, "Please specify password");
+			return true;
+		}else{
+			//envoyer erreur
+			return false;
+		}
+	}
+
+}

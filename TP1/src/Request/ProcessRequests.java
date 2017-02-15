@@ -1,12 +1,21 @@
 package Request;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 import Command.Command;
+import Command.CommandCdup;
 import Command.CommandCwd;
+import Command.CommandDele;
 import Command.CommandList;
+import Command.CommandMkd;
 import Command.CommandPass;
+import Command.CommandPasv;
+import Command.CommandPort;
 import Command.CommandPwd;
 import Command.CommandQuit;
 import Command.CommandRetr;
@@ -17,73 +26,58 @@ public class ProcessRequests {
 	private FtpRequest ftp;
 	private ServerSocket servSoc = null;
 	private Socket soc = null;
+	protected Map<String, Command> commands = new HashMap<>();
 	
-	public ProcessRequests(FtpRequest ftp){
+	/**
+	 * Constructeur ProcessRequests
+	 * @param ftp
+	 * @throws IOException
+	 */
+	public ProcessRequests(FtpRequest ftp) throws IOException{
 		this.ftp = ftp;
+		this.putAllCommands();
 	}
 	
-	public void processUSER(String name){
-		@SuppressWarnings("unused")
-		Command user = new CommandUser(ftp, name);
-		ftp.setNameGiven(true);
+	/**
+	 * Cette méthode crée la HashMap qui servira au dispatch des commandes
+	 * @throws IOException
+	 */
+	public void putAllCommands() throws IOException{
+		commands.put("CDUP", new CommandCdup(ftp));
+		commands.put("CWD",  new CommandCwd(ftp));
+		commands.put("DELE", new CommandDele(ftp));
+		commands.put("LIST", new CommandList(ftp));
+		commands.put("MKD",  new CommandMkd(ftp));
+		commands.put("PASS", new CommandPass(ftp));
+		commands.put("PASV", new CommandPasv(ftp));
+		commands.put("PORT", new CommandPort(ftp));
+		commands.put("PWD",  new CommandPwd(ftp));
+		commands.put("QUIT", new CommandQuit(ftp));
+		commands.put("RETR", new CommandRetr(ftp));
+		//commands.put("RMD",  new CommandRmd(ftp));
+		commands.put("STOR", new CommandStor(ftp));
+		commands.put("USER", new CommandUser(ftp));
 	}
 	
-	public void processPASS(String pass){
-		if(ftp.getNameGiven()){
-			@SuppressWarnings("unused")
-			Command pwd = new CommandPass(ftp, pass);
-		}else{
-			ftp.send(000, "Erreur: utilisateur non renseignÃ©");
-		}
+	/**
+	 * Les vérifications de connexion ont été faites avant appel à dispatch
+	 * dispatch vérifie si la commande existe puis fait un appel à la classe qui l'executera
+	 * @param command
+	 * @param arg
+	 */
+	public void dispatch(String command, String arg){
+		if (commands.containsKey(command)) {
+			Command executeCommand = commands.get(command);
+			AtomicReference<String> argRef = new AtomicReference<>(arg);
+			executeCommand.process(argRef.get());		
+		}else
+			ftp.send(120, "Erreur de syntaxe");
 	}
-	
-	public void processPASV(){
-		
-		ftp.send(227, "");
-		ftp.setIsPassive(true);
-	}
-	
-	public void processPORT(){
-		ftp.setIsPassive(false);
-	}
-	
-	public void processRETR(String filename){
-		@SuppressWarnings("unused")
-		Command retr = new CommandRetr(ftp, filename);
-	}
-	
-	public void processSTOR(String filename){
-		@SuppressWarnings("unused")
-		Command stor = new CommandStor(ftp, filename);
-	}
-	
-	public void processLIST(){
-		@SuppressWarnings("unused")
-		Command list = new CommandList(ftp);
-	}
-	
-	public void processQUIT(){
-		@SuppressWarnings("unused")
-		Command quit = new CommandQuit(ftp);
-	}
-	
-	public void processCwd(String filename){
-		CommandCwd cwd = new CommandCwd(ftp);
-		for( String temp: filename.split("/")){
-			if(!cwd.process(temp))
-				break;
-		}
-	}
-	
-	public void processPwd(){
-		@SuppressWarnings("unused")
-		CommandPwd pwd = new CommandPwd(ftp);
-	}
-	
+
 	
 	/**
 	 * 
-	 * Setter et Getter
+	 * Accesseurs de la classe
 	 * 
 	 */
 	public ServerSocket getServerSocket(){
