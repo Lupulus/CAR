@@ -1,19 +1,22 @@
-Laval Timothée
+Laval Timothï¿½e
       Ajar
 
+
+Le TP fonctionne correctement avec la commande nc, il s'execute avec la commande ftp mais cela provoque des comportements differents.
+
 Fonctionnement de l'application:
-	 Au lancement, l'application démarre avec le package Main:
-			-La classe Serveur va rechercher via la classe Information toutes les informations nécessaires à l'instanciation du serveur
+	 Au lancement, l'application demarre avec le package Main:
+			-La classe Serveur va rechercher via la classe Information toutes les informations necessaires a l'instanciation du serveur
                         puis va lancer le serveur et attendre une connexion d'un client.
- 			- Lorsqu'un client se connecte, la classe lance un objet FtpRequest dans un thread ce qui permet de gérer le multicompte
+ 			- Lorsqu'un client se connecte, la classe lance un objet FtpRequest dans un thread ce qui permet de gï¿½rer le multicompte
 
-	Une fois qu'un client est connecté, l'application se déroule dans le package Request:
-			-La classe FtpRequest gère la connection de message avec le client, chaque instruction du client sera
-			divisée puis traitée via le switch(ou la HashMap si j'ai eu le temps) pour dispatcher à ProcessRequest
-                        -ProcessRequest ne sert que d'intermédiaire entre la classe FtpRequest et les commandes, cette classe possède une fonction 
-                        processCommand() pour chaque commande et appelle la commande demandée par le client
+	Une fois qu'un client est connectï¿½, l'application se dï¿½roule dans le package Request:
+			-La classe FtpRequest gï¿½re la connection de message avec le client, chaque instruction du client sera
+			divisï¿½e puis traite via la HashMap  pour dispatcher a ProcessRequest
+                        -ProcessRequest ne sert que d'intermï¿½diaire entre la classe FtpRequest et les commandes, cette classe possï¿½de une fonction
+                        processCommand() pour chaque commande et appelle la commande demandï¿½e par le client
 
-	Une fois qu'une commmande est envoyée par le client et gérée par ProcessRequest:
-			-La classe Command est une abstraite qui possède un constructeur et une fonction process qui est overridée
-  			par chaque classe qui l'hérite. Elle instancie un FtpRequest (double dispatch) pour lui renvoyer les modifications
-  			à faire suite à la commande du client
+	Une fois qu'une commmande est envoyï¿½e par le client et gï¿½rï¿½e par ProcessRequest:
+			-La classe Command est une abstraite qui possï¿½de un constructeur et une fonction process qui est overridï¿½e
+  			par chaque classe qui l'hï¿½rite. Elle instancie un FtpRequest (double dispatch) pour lui renvoyer les modifications
+  			ï¿½ faire suite ï¿½ la commande du client
