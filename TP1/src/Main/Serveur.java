@@ -18,13 +18,13 @@ public class Serveur implements Runnable{
 	/**
 	 * On instancie un objet Information pour obtenir les informations du serveur (port et utilisateur)
 	 * On instance une serveurSocket puis on attend la connnexion d'un client
-	 * chaque client lance un thread lorsqu'il se connecte -> permet à plusieurs comptes d'être connectés.
+	 * chaque client lance un thread lorsqu'il se connecte -> permet ï¿½ plusieurs comptes d'ï¿½tre connectï¿½s.
 	 * @param args
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		Information inf = new Information();
+		final Information inf = new Information();
 		
 		try{
 			serv = new ServerSocket(inf.getPortServor());
@@ -35,17 +35,11 @@ public class Serveur implements Runnable{
 		
 		while(true){
 			s = serv.accept();
-			System.out.println("Socket connectÃ©e");
+			System.out.println("Socket connectee");
 			Thread t = new Thread(){
 				public void run(){
-					FtpRequest ftp;
-					try {
-						ftp = new FtpRequest(s, inf.getUsers());
-						ftp.processRequest();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}				
+					FtpRequest ftp = new FtpRequest(s, inf.getUsers());
+					ftp.processRequest();				
 				}};
 			t.start();
 		}

@@ -39,7 +39,7 @@ public class ProcessRequests {
 	}
 	
 	/**
-	 * Cette méthode crée la HashMap qui servira au dispatch des commandes
+	 * Cette mï¿½thode crï¿½e la HashMap qui servira au dispatch des commandes
 	 * @throws IOException
 	 */
 	public void putAllCommands() throws IOException{
@@ -60,8 +60,8 @@ public class ProcessRequests {
 	}
 	
 	/**
-	 * Les vérifications de connexion ont été faites avant appel à dispatch
-	 * dispatch vérifie si la commande existe puis fait un appel à la classe qui l'executera
+	 * Les vï¿½rifications de connexion ont ï¿½tï¿½ faites avant appel ï¿½ dispatch
+	 * dispatch vï¿½rifie si la commande existe puis fait un appel ï¿½ la classe qui l'executera
 	 * @param command
 	 * @param arg
 	 */

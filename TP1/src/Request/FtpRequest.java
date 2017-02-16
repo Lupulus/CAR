@@ -29,13 +29,14 @@ public class FtpRequest {
 	 * @param users
 	 * @throws IOException
 	 */
-	public FtpRequest(Socket s, HashMap<String, String> users) throws IOException {
+	public FtpRequest(Socket s, HashMap<String, String> users) {
 		this.socket = s;
 		this.users = users;
 		homeDirectory = new File(System.getProperty("user.dir") + "/servorFile");
 		currentDirectory = homeDirectory; 
-		request = new ProcessRequests(this);
+		
 		try{
+			request = new ProcessRequests(this);
 			this.in =  new BufferedReader( new InputStreamReader(s.getInputStream()));
 			this.out = new PrintWriter(s.getOutputStream());
 			send(220, "Attente d'un nouvel utilisateur");
@@ -45,10 +46,10 @@ public class FtpRequest {
 	}
 	
 	/**
-	 * Méthode principale de la classe FtpRequest
-	 * Elle fait une boucle infinie où à chaque itération elle attend un envoi du client
-	 * Une fois reçu elle divise le message puis fait quelques tests sur la connection de l'utilisateur avant 
-	 * d'envoyer à la classe ProcessRequest qui va gèrer les commandes.
+	 * Mï¿½thode principale de la classe FtpRequest
+	 * Elle fait une boucle infinie oï¿½ ï¿½ chaque itï¿½ration elle attend un envoi du client
+	 * Une fois reï¿½u elle divise le message puis fait quelques tests sur la connection de l'utilisateur avant 
+	 * d'envoyer ï¿½ la classe ProcessRequest qui va gï¿½rer les commandes.
 	 */
 	public void processRequest(){
 		
@@ -80,7 +81,7 @@ public class FtpRequest {
 	 * 
 	 * @param number
 	 * @param text
-	 * Cette méthode permet au serveur d'envoyer des messages au client.
+	 * Cette mï¿½thode permet au serveur d'envoyer des messages au client.
 	 */
 	public void send(int number, String text){
 		out.println(number + " " + text + "\r");
