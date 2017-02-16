@@ -1,0 +1,20 @@
+package Command;
+
+import Main.FtpRequest;
+
+public abstract class CommandRequest {
+	
+	FtpRequest ftp = null;
+	
+	public CommandRequest(FtpRequest ftp){
+		this.ftp = ftp;
+	}
+	
+	public void send(int number, String text){
+		ftp.send(number, text);
+	}
+	
+	public void process(){
+		
+	}
+}

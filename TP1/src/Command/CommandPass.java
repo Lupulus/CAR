@@ -12,11 +12,11 @@ public class CommandPass extends Command{
 	@Override
 	public boolean process(String arg){
 		if(arg.equals(ftp.getUsers().get(ftp.getConnectedUser())) ){
-			super.send(230, "Login succesful");
+			send(getAnswer().get("230"));
 			ftp.setIsConnected(true);
 			return true;
 		}else{
-			super.send(000, "Mot de passe incorrect");
+			send(getAnswer().get("503"));
 			return false;
 		}
 	}

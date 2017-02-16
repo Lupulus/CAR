@@ -1,0 +1,11 @@
+package Command;
+
+import Main.FtpRequest;
+
+public class CommandRetr extends Command{
+
+	public CommandRetr(FtpRequest ftp) {
+		super(ftp);
+	}
+	
+}

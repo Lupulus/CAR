@@ -11,7 +11,7 @@ public class CommandPwd extends Command{
 	
 	@Override
 	public boolean process(String arg){
-		ftp.send(257, ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")));
+		send(getAnswer().get("257Pwd"));
 		return true;
 	}
 }

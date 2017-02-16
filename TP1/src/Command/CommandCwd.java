@@ -18,24 +18,23 @@ public class CommandCwd extends Command {
 				      return true;
 					  
 			case "..": if(ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")).equals("/servorFile")){
-							send(553, "Repertoire racine, commande refusee");
+							send(getAnswer().get("553"));
 							return false;
 					   }else{
 							ftp.setCurrentDirectory(
 									new File(ftp.getCurrentDirectory().toString().substring(0, ftp.getCurrentDirectory().toString().lastIndexOf("\\" ))
 											));
-							ftp.send(212, ftp.getCurrentDirectory().toString());
+							send(getAnswer().get("212"));
 							return true;
 						}
-						//System.out.println(ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")));
 			default: for(String temp : ftp.getCurrentDirectory().list()){
 						if(temp.equals(arg)){
 							ftp.setCurrentDirectory(new File(ftp.getCurrentDirectory().toString() + "\\" + arg));
-							ftp.send(212, ftp.getCurrentDirectory().toString());
+							send(getAnswer().get("212"));
 							return true;
 						}	
 					 }
-					 send(550, "Repertoire inconnu, commande refusee");
+					send(getAnswer().get("550"));
 					 return false;
 				
 		}

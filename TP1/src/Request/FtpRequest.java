@@ -5,14 +5,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashMap;
 
-@SuppressWarnings("unused")
+import Command.Answer;
+
+
 public class FtpRequest {
-	
+	 
 	private String tab[];
-	private boolean nameGiven = false, isConnected = false;
+	private boolean nameGiven = false, isConnected = false, isClosed = false;
 	private boolean isPassive;
 	private BufferedReader in;
 	private PrintWriter out;
@@ -21,6 +24,7 @@ public class FtpRequest {
 	private ProcessRequests request;
 	private HashMap<String, String> users;
 	private String connectedUser;
+	private Answer answer;
 	
 	/**
 	 * Constructeur FtpRequest, instancie un fichier home qui est la racine du serveur
@@ -34,14 +38,15 @@ public class FtpRequest {
 		this.users = users;
 		homeDirectory = new File(System.getProperty("user.dir") + "/servorFile");
 		currentDirectory = homeDirectory; 
+		this.answer = new Answer(this);
 		
+		//System.out.println(answer.get("220"));
+		send(answer.get("220"));
 		try{
-			request = new ProcessRequests(this);
 			this.in =  new BufferedReader( new InputStreamReader(s.getInputStream()));
 			this.out = new PrintWriter(s.getOutputStream());
-			send(220, "Attente d'un nouvel utilisateur");
+			this.request = new ProcessRequests(this);
 		}catch(Exception e){
-			
 		}	
 	}
 	
@@ -52,28 +57,50 @@ public class FtpRequest {
 	 * d'envoyer � la classe ProcessRequest qui va g�rer les commandes.
 	 */
 	public void processRequest(){
+	    String temp;
+	    
 		
+		while(!getNameGiven()){
 			try {
-				
-				while(true){
-				    String temp = in.readLine();
+				temp = in.readLine();
+			    this.tab = temp.split(" ");
+			    String arg = (tab.length < 2) ? "" : tab[1];	 
+				if(tab[0].equals("USER"))
+					request.dispatch(tab[0], arg);
+				else
+					send(answer.get("220"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		while(!getIsConnected()){
+			try{
+				temp = in.readLine();
+			    this.tab = temp.split(" ");
+			    String arg = (tab.length < 2) ? "" : tab[1];	 
+				if(tab[0].equals("PASS"))
+					request.dispatch(tab[0], arg);
+				else
+					send(answer.get("250"));
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
+		
+		while(!getIsClosed()){
+			try {
+					
+				    temp = in.readLine();
 				    this.tab = temp.split(" ");
 				    String arg = (tab.length < 2) ? "" : tab[1];	    
 				    
-				    
-					if(!getNameGiven() && !tab[0].equals("USER")){
-						send(250, "Need connection");
-					}
-					else if(!getIsConnected() && !tab[0].equals("PASS")){
-						send(250, "Need password");
-					}
-					else{
-						request.dispatch(tab[0], tab[1]);
-					}
-			}
-	    } catch (IOException e) {
-				// TODO Auto-generated catch block
+					request.dispatch(tab[0], arg);
+								
+			} catch (IOException e) {
 				e.printStackTrace();
+			}
+	
 		}
 	}
 	
@@ -83,9 +110,13 @@ public class FtpRequest {
 	 * @param text
 	 * Cette m�thode permet au serveur d'envoyer des messages au client.
 	 */
-	public void send(int number, String text){
-		out.println(number + " " + text + "\r");
-		out.flush();
+	public void send(String arg){
+		try {
+			socket.getOutputStream().write(arg.getBytes());
+			socket.getOutputStream().flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+}
 	}
 	
 	/**
@@ -106,7 +137,7 @@ public class FtpRequest {
 	}
 	
 	public void setIsPassive(boolean setter){
-		isPassive = setter;
+		setPassive(setter);
 	}
 	
 	public boolean getNameGiven(){
@@ -151,6 +182,30 @@ public class FtpRequest {
 	
 	public void setConnectedUser(String user){
 		this.connectedUser = user;
+	}
+
+	public boolean isPassive() {
+		return isPassive;
+	}
+
+	public void setPassive(boolean isPassive) {
+		this.isPassive = isPassive;
+	}
+	
+	public boolean getIsClosed(){
+		return this.isClosed;
+	}
+	
+	public void setIsClosed(boolean setter){
+		this.isClosed = setter;
+	}
+	
+	public Answer getAnswer(){
+		return this.answer;
+	}
+	
+	public void setInetAddress(InetSocketAddress setter){
+		this.answer.setInetAddress(setter) ;
 	}
 	
 }

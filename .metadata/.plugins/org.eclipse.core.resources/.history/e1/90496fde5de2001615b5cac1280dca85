@@ -1,0 +1,35 @@
+package Main;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Serveur {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		ServerSocket serv = null;
+		Socket s;
+		try{
+			serv = new ServerSocket(1025);
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		while(true){
+			s = serv.accept();
+			final Socket temp = s;
+			Thread t = new Thread() {
+				public void run() {
+					FtpRequest ftp = new FtpRequest();
+					ftp.processRequest(temp);
+				}
+			};			
+		}
+	}
+
+}

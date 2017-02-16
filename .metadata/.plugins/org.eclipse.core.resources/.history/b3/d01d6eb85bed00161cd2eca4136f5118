@@ -1,0 +1,16 @@
+package Command;
+
+import Main.FtpRequest;
+
+public class CommandList extends Command{
+
+	public CommandList(FtpRequest ftp) {
+		super(ftp);
+		process();
+	}
+	
+	public void process(){
+		
+	}
+
+}

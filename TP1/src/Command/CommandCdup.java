@@ -6,7 +6,11 @@ public class CommandCdup extends Command{
 	
 	public CommandCdup(FtpRequest ftp){
 		super(ftp);
+	}
+	
+	@Override
+	public boolean process(String arg){
 		CommandCwd cwd = new CommandCwd(ftp);
-		cwd.process("..");
+		return cwd.process("..");
 	}
 }

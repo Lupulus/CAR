@@ -1,0 +1,23 @@
+package Command;
+
+import Main.FtpRequest;
+
+public class CommandPass extends CommandRequest{
+	
+	String pass;
+	
+	public CommandPass(FtpRequest ftp, String pass) {
+		super(ftp);
+		this.pass = pass;
+		process();
+	}
+	
+	@Override
+	public void process(){
+		if(pass.equals("pass") ){
+			super.send(230, "Login succesful");
+		}else{
+			send(000, "Mot de passe incorrect");
+		}
+	}
+}

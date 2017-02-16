@@ -1,0 +1,18 @@
+package Command;
+
+
+import Request.FtpRequest;
+
+public class CommandPwd extends Command{
+	public CommandPwd(FtpRequest ftp) {
+		super(ftp);
+		
+	}
+	
+	@Override
+	public boolean process(String arg){
+		getAnswer().setSpecificMessage(ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")) ); 
+		ftp.send(257, ftp.getCurrentDirectory().toString().substring(ftp.getHomeDirectory().toString().lastIndexOf("/")));
+		return true;
+	}
+}

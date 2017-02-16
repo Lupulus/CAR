@@ -10,3 +10,9 @@
 1487194458606	Rename local variable 'pass'
 1487194480131	Rename local variable 'filename'
 1487194584758	Rename local variable 'filename'
+1487238752666	Encapsulate field 'isPassive'
+1487238985015	Copy compilation unit
+1487239007338	Delete element
+1487248209010	Move compilation unit
+1487248346656	Rename compilation unit 'Asnwer.java'
+1487254676612	Delete element

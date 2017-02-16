@@ -20,6 +20,7 @@ import Command.CommandPwd;
 import Command.CommandQuit;
 import Command.CommandRetr;
 import Command.CommandStor;
+import Command.CommandSyst;
 import Command.CommandUser;
 
 public class ProcessRequests {
@@ -33,9 +34,13 @@ public class ProcessRequests {
 	 * @param ftp
 	 * @throws IOException
 	 */
-	public ProcessRequests(FtpRequest ftp) throws IOException{
+	public ProcessRequests(FtpRequest ftp){
 		this.ftp = ftp;
-		this.putAllCommands();
+		try{
+			this.putAllCommands();
+		}catch(Exception e){
+			System.out.println("DEBUG process");
+		}
 	}
 	
 	/**
@@ -57,6 +62,7 @@ public class ProcessRequests {
 		//commands.put("RMD",  new CommandRmd(ftp));
 		commands.put("STOR", new CommandStor(ftp));
 		commands.put("USER", new CommandUser(ftp));
+		commands.put("SYST", new CommandSyst(ftp));
 	}
 	
 	/**
@@ -67,11 +73,12 @@ public class ProcessRequests {
 	 */
 	public void dispatch(String command, String arg){
 		if (commands.containsKey(command)) {
+			System.out.println(command);
 			Command executeCommand = commands.get(command);
 			AtomicReference<String> argRef = new AtomicReference<>(arg);
 			executeCommand.process(argRef.get());		
 		}else
-			ftp.send(120, "Erreur de syntaxe");
+			ftp.send(ftp.getAnswer().getAnswers().get("120"));
 	}
 
 	

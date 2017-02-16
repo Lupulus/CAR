@@ -7,4 +7,5 @@
 <fullyQualifiedTypeName name="java.util.concurrent.atomic.AtomicReference"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.io.UncheckedIOException"/>
+<fullyQualifiedTypeName name="Main.Information"/>
 </qualifiedTypeNameHistroy>

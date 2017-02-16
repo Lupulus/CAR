@@ -1,0 +1,57 @@
+package Command;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
+
+import Request.FtpRequest;
+
+public class CommandRetr extends Command{
+
+	public CommandRetr(FtpRequest ftp) {
+		super(ftp);
+	}
+	
+	@Override
+	public boolean process(String arg){
+		File file = new File(ftp.getCurrentDirectory().getAbsolutePath() + "/" + arg);
+		
+		try(FileInputStream is = new FileInputStream(file)) {
+			this.transmitToClient(is);
+			return true;
+		} catch(IOException e) {
+			 send(001, "RETR réussi");
+			return false;
+		}
+	   
+	}
+	
+	
+	public void transmitToClient(InputStream data) {
+		OutputStream stream = null;
+		try {
+			// début d'utilisation de la connexion
+			send(125, "Data connection already open; transfer starting.");
+			
+			stream = ftp.getRequest().getSocket().getOutputStream();
+			
+			int n;
+			byte[] buffer = new byte[1024];
+			while((n = data.read(buffer)) > -1) {
+				stream.write(buffer, 0, n);
+			}
+			
+			stream.close();
+						
+			send(226, "Data transfered succesfully. Data connection closed.");
+		} catch(IOException e) {
+			send(426, "Connection closed, transfert aborted");
+		}
+		//try { if (stream != null) stream.close(); } catch(IOException e) { }
+	}
+	
+}

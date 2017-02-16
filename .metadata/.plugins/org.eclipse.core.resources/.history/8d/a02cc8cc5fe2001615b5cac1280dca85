@@ -1,0 +1,123 @@
+package Main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.Socket;
+
+public class FtpRequest {
+	
+	String tab[];
+	boolean getName = false, connected = false;
+	boolean passive;
+	
+	public void processRequest(Socket s){
+		while(true){
+			try {
+	            InputStream is = s.getInputStream();
+	            InputStreamReader ir = new InputStreamReader(is); 
+	            BufferedReader rd = new BufferedReader(ir);
+				System.out.println("DEBUG");
+	            this.tab = rd.readLine().split(" ");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(connected){
+				switch(tab[0].toUpperCase()){
+					case "USER" : 
+					case "PASS" : send(2, "Erreur déjà connecté");
+					              break;
+					case "PAVD" : this.processPAVD();
+					              break;
+					case "PORT" : this.processPORT();
+					              break;
+					case "RETR" : this.processRETR();
+					              break;
+					case "LIST" : this.processLIST();
+					              break;
+					case "STOR" : this.processSTOR();
+					              break;
+					case "QUIT" : this.processQUIT();
+					              break;
+					default     : //renvoyer une erreur
+				}
+			}else{
+				switch(tab[0].toUpperCase()){
+					case "USER" : this.processUSER(tab[1]); 
+								  break;
+					case "PASS" : this.processPASS(tab[1]);
+					              break;
+					case "PAVD" : 
+					case "PORT" : 
+					case "RETR" : 
+					case "LIST" : 
+					case "STOR" : 
+					case "QUIT" : send(1, "Erreur Non connecté");
+					              break;
+					default     : //renvoyer une erreur
+				}
+			}
+		}
+	}
+
+	public void send(int number, String text){
+		System.out.println(number + " " + text);
+	}
+	
+	public void processUSER(String name){
+		if(name == ""){
+			send(331, "Please specify password");
+			getName = true;
+		}else{
+			//envoyer erreur
+		}
+	}
+	
+	public void processPASS(String pass){
+		if(getName){
+			if(pass == "" ){
+				send(230, "Login succesful");
+				getName = false;
+				connected = true;
+			}else{
+				//errreur
+			}
+		}else{
+			send(000, "Erreur: utilisateur non renseigné");
+		}
+	}
+	
+	public void processPAVD(){
+		Thread t = new Thread(){
+			public void runnable(){
+				return;
+				//DataSocket ds = attendreCX();
+			};
+		};
+		send(227, "");
+		passive = true;
+	}
+	
+	public void processPORT(){
+		passive = false;
+	}
+	
+	public void processRETR(){
+		
+	}
+	
+	public void processSTOR(){
+		
+	}
+	
+	public void processLIST(){
+		
+	}
+	
+	public void processQUIT(){
+
+	}
+}

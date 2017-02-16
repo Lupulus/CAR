@@ -1,0 +1,45 @@
+package Command;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import Request.FtpRequest;
+
+public class CommandPort extends Command{
+	
+
+	public CommandPort(FtpRequest ftp){
+		super(ftp);
+	}
+	
+	@Override
+	public boolean process(String arg){
+		/**Integer[] infos = Arrays.stream(arg.split(","))
+				.map(Integer::parseInt)
+				.toArray(Integer[]::new);
+		**/
+		String[] infos = arg.split(",");
+		String host = Arrays.stream(infos, 0, 4)
+				.collect(Collectors.joining("."));
+		
+		
+		int port = Integer.parseInt(infos[4]) * 256 + Integer.parseInt(infos[5]);
+		//int port = 0;
+		try {
+			ftp.getRequest().setSocket(new Socket(InetAddress.getByName(host),port));
+			send(getAnswer().getAnswers().get(2000));
+			return true;
+		} catch (IOException e1) {
+			send(getAnswer().getAnswers().get(425));
+			e1.printStackTrace();
+			return false;
+		} 
+	}
+}
+//serverSocket sur port 0 new ServerSocket(0) --> le crée aléatoirement
+
+//ici on récup IP et port puis on crée une socket pour

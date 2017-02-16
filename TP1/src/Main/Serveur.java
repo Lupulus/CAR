@@ -1,5 +1,6 @@
 package Main;
 
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -22,8 +23,7 @@ public class Serveur implements Runnable{
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {
 		final Information inf = new Information();
 		
 		try{
@@ -34,7 +34,11 @@ public class Serveur implements Runnable{
 		}
 		
 		while(true){
-			s = serv.accept();
+			try {
+				s = serv.accept();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			System.out.println("Socket connectee");
 			Thread t = new Thread(){
 				public void run(){

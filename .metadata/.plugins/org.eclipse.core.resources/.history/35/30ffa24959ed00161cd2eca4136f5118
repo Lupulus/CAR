@@ -1,0 +1,17 @@
+package Command;
+
+import Main.FtpRequest;
+
+public class CommandUser extends CommandRequest{
+
+	public CommandUser(FtpRequest ftp, String name) {
+		super(ftp);
+		process();
+	}
+	
+	@Override
+	public void process(){
+		super.send(220, "Please specify password");
+	}
+
+}

@@ -11,11 +11,12 @@ public class CommandUser extends Command{
 	@Override
 	public boolean process(String arg){
 		if(ftp.getUsers().containsKey(arg)){
-			super.send(331, "Please specify password");
+			send(getAnswer().get("331"));
+			ftp.setNameGiven(true);
 			ftp.setConnectedUser(arg);
 			return true;
 		}else{
-			//envoyer erreur
+			send(getAnswer().get("530"));
 			return false;
 		}
 	}

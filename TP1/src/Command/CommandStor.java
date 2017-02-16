@@ -23,7 +23,7 @@ public class CommandStor extends Command{
 			this.receiveFromClient(os);
 			return true;
 		} catch(IOException e) {
-			ftp.send(426, "Connection closed, transfert aborted");
+			send(getAnswer().get("426"));
 			return false;
 		}
 	}
@@ -34,8 +34,7 @@ public class CommandStor extends Command{
 		DataInputStream dataB = null;
 		try {
 			// début d'utilisation de la connexion
-			ftp.send(125, "Data connection already open; transfer starting.");
-
+			send(getAnswer().get("125"));
 			dataB = new DataInputStream(ftp.getRequest().getSocket().getInputStream());
 			
 			int n;
@@ -46,10 +45,10 @@ public class CommandStor extends Command{
 			
 			dataB.close();
 			data.close();
-			
-			ftp.send(226,"Data transfered succesfully. Data connection closed.");
+
+			send(getAnswer().get("226"));
 		} catch(IOException  e) {
-			ftp.send(426, "Connection closed, transfert aborted");
+			send(getAnswer().get("426"));
 		}
 		try { if (stream != null) stream.close(); } catch(IOException e) { }
 	}

@@ -24,7 +24,7 @@ public class CommandRetr extends Command{
 			this.transmitToClient(is);
 			return true;
 		} catch(IOException e) {
-			 super.send(001, "RETR réussi");
+			send(getAnswer().get("550NotFound"));
 			return false;
 		}
 	   
@@ -35,7 +35,7 @@ public class CommandRetr extends Command{
 		OutputStream stream = null;
 		try {
 			// début d'utilisation de la connexion
-			ftp.send(125, "Data connection already open; transfer starting.");
+			send(getAnswer().get("125"));
 			
 			stream = ftp.getRequest().getSocket().getOutputStream();
 			
@@ -46,10 +46,10 @@ public class CommandRetr extends Command{
 			}
 			
 			stream.close();
-						
-			ftp.send(226, "Data transfered succesfully. Data connection closed.");
+
+			send(getAnswer().get("226"));
 		} catch(IOException e) {
-			ftp.send(426, "Connection closed, transfert aborted");
+			send(getAnswer().get("426"));
 		}
 		//try { if (stream != null) stream.close(); } catch(IOException e) { }
 	}

@@ -1,0 +1,22 @@
+package Command;
+
+import java.io.File;
+
+import Main.FtpRequest;
+
+public class CommandRetr extends Command{
+
+	public CommandRetr(FtpRequest ftp, File repertoire, String filename) {
+		super(ftp);
+		process(repertoire, filename);
+	}
+	
+	public void process(File repertoire, String filename){
+		File source = new File(repertoire.getAbsolutePath() + "/" + filename);
+	    File destination = new File("" + "/" + filename);
+
+	    source.renameTo(destination);
+	    super.send(001, "RETR réussi");
+	}
+	
+}

@@ -1,0 +1,109 @@
+package Main;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
+public class FtpRequest {
+	
+	String tab[];
+	boolean passive;
+	
+	public void processRequest(Socket s){
+		try {
+			InputStream is = s.getInputStream();
+			 int i;
+			 String value= null;
+			// reads till the end of the stream
+	         while((i=is.read())!=-1)
+	         {
+	        	 value += (char) i;
+	         }
+	         this.tab = value.split(" ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(isConnected()){
+			switch(tab[0].toUpperCase()){
+				case "USER" : //erreur 
+							  break;
+				case "PASS" : //erreur
+				              break;
+				case "PAVD" : this.processPAVD();
+				              break;
+				case "PORT" : this.processPORT();
+				              break;
+				case "RETR" : this.processRETR();
+				              break;
+				case "LIST" : this.processLIST();
+				              break;
+				case "STOR" : this.processSTOR();
+				              break;
+				case "QUIT" : this.processQUIT();
+				              break;
+				default     : //renvoyer une erreur
+			}
+		}else{
+			switch(tab[0].toUpperCase()){
+				case "USER" : this.processUSER(tab[1]); 
+							  break;
+				case "PASS" : this.processPASS(tab[1]);
+				              break;
+				case "PAVD" : 
+				case "PORT" : 
+				case "RETR" : 
+				case "LIST" : 
+				case "STOR" : 
+				case "QUIT" : //erreur nopn connecté
+				              break;
+				default     : //renvoyer une erreur
+		}
+		}
+	}
+
+	public boolean isConnected(){
+		return false;
+	}
+	
+	public void processUSER(String name){
+		if(name == ""){
+			//envoyer message
+		}else{
+			//envoyer erreur
+		}
+	}
+	
+	public void processPASS(String pass){
+		if(pass == ""){
+			//envoyer message
+		}else{
+			//errreur
+		}
+	}
+	
+	public void processPAVD(){
+		passive = true;
+	}
+	
+	public void processPORT(){
+		passive = false;
+	}
+	
+	public void processRETR(){
+		
+	}
+	
+	public void processSTOR(){
+		
+	}
+	
+	public void processLIST(){
+		
+	}
+	
+	public void processQUIT(){
+
+	}
+}

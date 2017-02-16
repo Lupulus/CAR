@@ -10,11 +10,12 @@ public class CommandQuit extends Command{
 	
 	@Override
 	public boolean process(String arg){
-		super.send(221, "Deconnexion");
+		send(getAnswer().get("221"));
 		try{
 			ftp.getIn().close();
 			ftp.getOut().close();
-			ftp.send(221, "Connection closed");
+			ftp.getSocket().close();
+			ftp.setIsClosed(true);
 			return true;		
 		}catch(Exception e){
 			e.printStackTrace();

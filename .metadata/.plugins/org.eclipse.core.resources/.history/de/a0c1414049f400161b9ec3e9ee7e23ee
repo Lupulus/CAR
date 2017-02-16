@@ -1,0 +1,29 @@
+package Command;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+import Request.FtpRequest;
+
+public class CommandPasv extends Command {
+	
+	public CommandPasv(FtpRequest ftp) throws IOException{
+		super(ftp);
+	}
+	
+	@Override
+	public boolean process(String arg){
+		try {
+			ftp.getRequest().setServerSocket(new ServerSocket(0,1,ftp.getSocket().getLocalAddress()));
+			ftp.getRequest().setSocket(ftp.getRequest().getServerSocket().accept());
+			getAnswer().setSpecificMessage("Incorrect password");
+			send(getAnswer().getAnswers().get(503));
+			return true;
+		} catch (IOException e) {
+			getAnswer().setSpecificMessage("Incorrect password");
+			send(getAnswer().getAnswers().get(503));
+			e.printStackTrace();
+			return false;
+		}
+	}
+}

@@ -31,7 +31,7 @@ public class CommandDele extends Command{
 			
 			try {
 				if (target.equals(ftp.getHomeDirectory().getCanonicalPath())) {
-					ftp.send(550, "Can't remove root directory");
+					send(getAnswer().get("550Remove"));
 					return false;
 				}
 			} catch (IOException e1) {
@@ -41,16 +41,16 @@ public class CommandDele extends Command{
 			
 			try {
 			    Files.delete(target.toPath());
-			    ftp.send(250, "File deleted successfully");
+			    send(getAnswer().get("250Dele"));
 			    return true;
 			} catch (NoSuchFileException e) {
-				ftp.send(550, "File not found");
+				send(getAnswer().get("550NotFound"));
 				return false;
 			} catch (DirectoryNotEmptyException e) {
-				ftp.send(550, "Directory not empty");
+				send(getAnswer().get("550NotEmpty"));
 				return false;
 			} catch (IOException e) {
-				ftp.send(550, "Can't remove file: "+e.getMessage());
+				send(getAnswer().get("550CantRem"));
 				return false;
 			}
 			

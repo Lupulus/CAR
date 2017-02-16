@@ -27,13 +27,14 @@ public class CommandMkd extends Command{
 			throw new UncheckedIOException(e);
 		}
 		if (target.exists()) {
-			ftp.send(550, "File with same name already exists");
+			send(getAnswer().get("550Exist"));
 			return false;
 		}
 		
 		target.mkdirs();
 		
-		ftp.send(257,"Command mkdir managed");
+
+		send(getAnswer().get("257Man"));
 		return true;
 	}
 }

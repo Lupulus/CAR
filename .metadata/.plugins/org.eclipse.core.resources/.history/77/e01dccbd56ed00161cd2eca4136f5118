@@ -1,0 +1,13 @@
+package Main;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+
+	public class Information{
+
+
+	   public void readXML(){
+		   final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	   }
+	}
+

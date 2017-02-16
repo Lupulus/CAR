@@ -1,0 +1,16 @@
+package Main;
+
+	import java.io.File;
+
+import javax.swing.text.Document;
+import javax.swing.text.html.parser.Element;
+
+	public class Information{
+	   static Document document;
+	   static Element racine;
+
+	   public void readXML(){
+
+	   }
+	}
+

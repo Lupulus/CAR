@@ -1,0 +1,78 @@
+package Main;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
+
+public class FtpRequest {
+	
+	String tab[];
+	
+	public void processRequest(Socket s){
+		try {
+			InputStream is = s.getInputStream();
+			 int i;
+			 String value= null;
+			// reads till the end of the stream
+	         while((i=is.read())!=-1)
+	         {
+	        	 value += (char) i;
+	         }
+	         this.tab = value.split(" ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		switch(tab[1].toUpperCase()){
+			case "USER" : this.processUSER(); 
+						  break;
+			case "PASS" : this.processPASS();
+			              break;
+			case "PAVD" : this.processPAVD();
+			              break;
+			case "PORT" : this.processPORT();
+			              break;
+			case "RETR" : this.processRETR();
+			              break;
+			case "LIST" : this.processLIST();
+			              break;
+			case "STOR" : this.processSTOR();
+			              break;
+			case "QUIT" : this.processQUIT();
+			              break;
+		}
+	}
+	
+	public void processUSER(){
+		
+	}
+	
+	public void processPASS(){
+		
+	}
+	
+	public void processPAVD(){
+		
+	}
+	
+	public void processPORT(){
+		
+	}
+	
+	public void processRETR(){
+		
+	}
+	
+	public void processSTOR(){
+		
+	}
+	
+	public void processLIST(){
+		
+	}
+	
+	public void processQUIT(){
+
+	}
+}
