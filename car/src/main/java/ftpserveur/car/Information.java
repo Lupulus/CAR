@@ -12,7 +12,7 @@ import java.util.HashMap;
 			this.port = 2250;
 			this.users = new HashMap<String, String>();
 			this.users.put("timothee", "pass1234");
-			this.users.put("ajar", "pwd4321");
+			this.users.put("hajar", "pwd4321");
 		}
 		public int getPortServor(){
 			return this.port;

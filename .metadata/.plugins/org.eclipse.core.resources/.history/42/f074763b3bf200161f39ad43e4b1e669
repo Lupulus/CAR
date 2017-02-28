@@ -1,9 +1,0 @@
-package Command;
-
-import Request.FtpRequest;
-
-public class CommandCwd extends Command {
-	public CommandCwd(FtpRequest ftp){
-		super(ftp);
-	}
-}
