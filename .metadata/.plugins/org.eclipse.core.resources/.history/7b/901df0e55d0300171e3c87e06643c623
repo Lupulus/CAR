@@ -1,0 +1,5 @@
+package main.java.rest.car.ftpclient;
+
+public interface FtpConnection {
+
+}

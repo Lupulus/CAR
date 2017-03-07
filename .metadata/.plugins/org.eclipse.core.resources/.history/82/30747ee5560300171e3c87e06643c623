@@ -1,0 +1,26 @@
+package main.java.car.tp2;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+public class UserRessource {
+	
+	@GET
+	@Path("/user/{name}")
+	public boolean user(@PathParam("name") String name){
+		return name == "tim";
+	}
+
+	 @GET
+	 @Path("/book/{isbn}")
+	 public String getBook( @PathParam("isbn") String isbn ) {
+		 return "Book: "+isbn;		 
+	 }
+
+	 @GET
+	 @Path("{var: .*}/stuff")
+	 public String getStuff( @PathParam("var") String stuff ) {
+		 return "Stuff: "+stuff;
+	 }
+}

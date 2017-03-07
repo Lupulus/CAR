@@ -4,7 +4,7 @@ README
 Ce projet fournit un framework simple [1] pour l'execution de programmes
 accessibles en tant que ressources REST.
 
-Les ressources se programment comment des classes annotees avec l'API JAX-RS.
+Les ressources se programment comme des classes annotees avec l'API JAX-RS.
 Voir un example avec la classe car.tp2.HelloWorldResource.
 
 Pour pouvoir etre prises en compte par le framework, les ressources doivent etre

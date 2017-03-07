@@ -1,0 +1,19 @@
+package main.java.car.tp2;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+
+public class UserRessource {
+	
+	@GET
+	@Path("/user/{name}")
+	public String user(@PathParam("name") String name){
+		if (name.equals("tim")){
+			return "give password";
+		}
+		return "loggin incorrect";
+	}
+
+
+}
