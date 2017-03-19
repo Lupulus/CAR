@@ -11,7 +11,7 @@ import org.apache.commons.net.ftp.FTPClient;
 
 import main.java.rest.car.config.Configuration;
 
-public abstract class FtpExec {
+public  class FtpExec {
 	
 	private FTPClient ftpClient = null;
 	private boolean closeFTPClientAfterExecute = true;
@@ -64,6 +64,10 @@ public abstract class FtpExec {
 					ftpClient.disconnect();
 				} catch (IOException e) { }
 		}
+	}
+	
+	public FTPClient getFTPClient(){
+		return ftpClient;
 	}
 	
 }
