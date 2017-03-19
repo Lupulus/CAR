@@ -27,10 +27,14 @@ public class Starter {
  		context.addEventListener( new ContextLoaderListener() );
  		
  		context.setInitParameter( "contextClass", AnnotationConfigWebApplicationContext.class.getName() );
- 		context.setInitParameter( "contextConfigLocation", Config.class.getName() );
+ 		context.setInitParameter( "contextConfigLocation", RessourceManager.class.getName() );
  		 		
         server.setHandler( context );
         server.start();
         server.join();	
 	}
+	
+	public static void error(String message) {
+		System.err.println("[" + Thread.currentThread().getName() + "] " + message);
+}
 }
