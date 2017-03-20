@@ -98,5 +98,7 @@
 	<classpathentry kind="lib" path="lib/xmlschema-core-2.0.3.jar"/>
 	<classpathentry kind="lib" path="/home/m1/laval/Documents/M1S2/CAR/car-tp2-jdk8/lib/cxf-rt-frontend-jaxrs-3.1.10.jar"/>
 	<classpathentry kind="lib" path="/home/m1/laval/Documents/M1S2/CAR/car-tp2-jdk8/lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lupulus/CAR/rest/lib/cxf-rt-frontend-jaxrs-3.1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Lupulus/CAR/rest/lib/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

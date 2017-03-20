@@ -1,138 +1,179 @@
 package car.tp2.ressource;
 
+
+import java.io.IOException;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPReply;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import car.tp2.ftpclient.FtpExec;
-import car.tp2.ftpclient.ResponseFactory;
 
-@Path("/dir")
-public class DirRessource extends AbstractRessource {
+/*
+ * Ressource contenantles différentes rêquetes FTP
+ */
+@Path("/")
+public class DirRessource {
 	
-	/**
-	 * Liste le contenu du rï¿½pertoire path
-	 * @param path Chemin du rï¿½pertoire
-	 * @param auth (Authentification nï¿½cessaire)
-	 * @param transfertMode Mode de transfert (active/passive)
-	 * @return Retourne la rï¿½ponse au format JSON contenant la liste des fichiers avec 
-	 * leurs informations. Sinon une erreur. 
-	 * @throws Exception
-	 */
-	@GET
-	@Path("{path:.*}")
-	public Response getDir(@PathParam("path") String path, @HeaderParam("Authorization") String auth,
-				@QueryParam("transfertMode") String transfertMode) throws Exception {
-		String absPath = "/" + path;
-		return new FtpExec()
-				.addAction(getBasicLoginHandler(auth))
-				.addAction(getTransfertModeHandler(transfertMode))
-				.addAction((exec) -> {
-					FTPClient cl = exec.getFTPClient();
-								
-					FTPFile[] files = cl.listFiles(absPath); // rï¿½cupï¿½ration du contenu du dossier depuis le serveur
-					
-					// si ce n'est pas un dossier
-					if (files == null || !FTPReply.isPositiveCompletion(cl.getReplyCode())) {
-						return ResponseFactory.jsonFTPResponse(Status.NOT_FOUND,
-								cl.getReplyCode(),
-								cl.getReplyStrings());
-					}
-					
-					// construction de la rï¿½ponse
-					JsonArray jsonFiles = new JsonArray();
-					for (FTPFile file : files) {
-						JsonObject jsonFile = new JsonObject();
-						jsonFile.addProperty("name", file.getName());
-						jsonFile.addProperty("type",
-								(file.getType() == FTPFile.DIRECTORY_TYPE) ? "DIR" : "FILE");
-						jsonFile.addProperty("lastModified", file.getTimestamp().getTimeInMillis()/1000);
-						jsonFile.addProperty("size", file.getSize());
-						jsonFile.addProperty("owner", file.getUser());
-						jsonFile.addProperty("group", file.getGroup());
-						jsonFiles.add(jsonFile);
-					}
-					JsonObject root = new JsonObject();
-					root.addProperty("directoryPath", absPath);
-					root.add("directoryContent", jsonFiles);
-					return ResponseFactory.jsonResponse(Status.OK, root);
-					
-				})
-				.addAction(getFallbackHandler())
-				.execute();
-	}
-	
-	
+	FtpExec ftp = new FtpExec();
 
-	/**
-	 * Permet de supprimer un repertoire.
-	 * @param path Chemin du rï¿½pertoire
-	 * @param auth (Authentification nï¿½cessaire)
-	 * @param transfertMode mode de transfert (active/passive)
-	 * @return Retourne une reponse dans un objet JSON : Si l'action c'est mal passï¿½e, un code d'erreur est renvoyï¿½. 
+	/*
+	 * Connexion au serveur ftp 
+	 * 
+	 * @param login
+	 * @param password
+	 * @return 
 	 */
-	@DELETE
-	@Path("{path:.+}")
-	public Response deleteDir(@PathParam("path") String path, @HeaderParam("Authorization") String auth,
-			@QueryParam("transfertMode") String transfertMode) {
-		String absPath = "/" + path;
-		return new FtpExec()
-				.addAction(getBasicLoginHandler(auth))
-				.addAction(getTransfertModeHandler(transfertMode))
-				.addAction((exec) -> {
-					FTPClient cl = exec.getFTPClient();
-					if (cl.removeDirectory(absPath)) {
-						return ResponseFactory.jsonFTPResponse(Status.OK, cl.getReplyCode(), cl.getReplyStrings());
-					}
-					return ResponseFactory.jsonFTPResponse(Status.NOT_FOUND, cl.getReplyCode(), cl.getReplyStrings());
-				})
-				.addAction(getFallbackHandler())
-				.execute();
+	 @GET
+	 @Path("login")
+	 @Produces("text/html")
+	 public String Connection(@QueryParam("pseudo") String pseudo,@QueryParam("password") String password) throws  IOException{
+		 return ftp.connect(pseudo, password);
+	 }
+	 /*
+	  * Liste le repertoire root
+	  * @return le contenu du repertoire parent
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("list")
+	 public String listFiles() throws  IOException{
+		 
+		 return this.ftp.ls(this.ftp.getCurrentDirectory());
+	 }
+	 
+	 /*
+	  * Liste le repertoire
+	  * @param repertoire
+	  * @return le contenu du repertoire 
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("list/{directory}")
+	 public String listFiles(@PathParam("directory") String directory) throws  IOException{
+	     return ftp.ls(directory);
+	 }
+	 /*
+	  * Cree un nouveau repertoire
+	  * @param nom du repertoire
+	  * @return
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("mkdir/{directory}")
+	 public String mkdir(@PathParam("directory") String directory) throws  IOException{
+	     return ftp.mkdir(directory);
+	 }
+	 
+	 /*
+	  * Deplace dans un repertoire
+	  * @param chemin du repertoire
+	  * @return
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("cd/{directory}")
+	 public String cd(@PathParam("directory") String directory) throws  IOException{
+		 
+	     return ftp.cd(directory);
+	 }
+	 /*
+	  * Remonte le repertoire parent
+	  * @return
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("cdup")
+	 public String cdup() throws  IOException{
+		 
+	     return ftp.cdup();
+	 }
+	 /*
+	  * Afficher le chemin absolu du repertoire courant
+	  * @return
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("pwd")
+	 public String pwd() throws  IOException{
+	     return ftp.pwd();
+	 }
+	 
+	 /*
+	  * Renomme un fichier ou un repertoire
+	  * @param oldName le repertoire
+	  * @param newName le nouveau nom du repertoire
+	  * @return 
+	  */
+	 @PUT
+	 @Produces("text/html")
+	 @Path("rename/{oldName}")
+	 public String rename(@PathParam("oldName")String oldName, @QueryParam("newName")String newName) throws  IOException{
 		
+		 if (newName==null)
+			 newName=oldName;
+		 this.ftp.renameFile(oldName, newName);
+		
+		 return "ok";
+	 }
+	 
+	 /*
+	  * Supprimer un fichier ou un repertoire
+	  *@param pathname fichier à supprimer
+	  *@return resultat de la rêquete
+	  */
+	 @DELETE
+	 @Produces("text/html")
+	 @Path("delete/{pathname}")
+	 public String delete(@PathParam("pathname")String pathname) throws IOException{
+		
+		 return this.ftp.deleteFile(pathname);	
+	 }
+	 
+	 /*
+	  * Deconnecte sur le serveur FTP
+	  * 
+	  */
+	 @GET
+	 @Produces("text/html")
+	 @Path("disconnect")
+	 public String disconnect() throws  IOException{
+	     return ftp.disconnet();
+	 }
+	 /*
+	  * Recupere un fichier depuis le serveur FTP
+	  * @param le fichier
+	  * @return
+	  */
+	@GET
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	@Path("getFile/{pathname}")
+	public Response getFile(@PathParam("pathname")String pathname) throws  IOException{
+		
+		return Response.ok(this.ftp.getFile(pathname),MediaType.APPLICATION_OCTET_STREAM).build();
 	}
-	
-	
-	/**
-	 * Permet de crï¿½er un rï¿½pertoire
-	 * @param path Chemin du rï¿½pertoire
-	 * @param auth Authentification
-	 * @return Retourne une reponse dans un Objet JSON. Si l'action c'est mal passï¿½e, un code d'erreur HTTP 
-	 * ainsi qu'un code d'erreur FTP est renvoyï¿½. 
+	/*
+	 * upload un fichier dans le serveur FTP
+	 * dans le repertoire courant
+	 * @param fichier
+	 * @return
 	 */
-	@POST
-	@Path("{path:.+}")
-	public Response postDir(@PathParam("path") String path, @HeaderParam("Authorization") String auth) {
-		String absPath = "/" + path;
-		return new FtpExec()
-				.addAction(getBasicLoginHandler(auth))
-				.addAction((exec) -> {
-					FTPClient cl = exec.getFTPClient();
-					if(cl.makeDirectory(absPath)) {
-						return ResponseFactory.jsonFTPResponse(Status.CREATED,
-								cl.getReplyCode(), cl.getReplyStrings());
-					} else if (cl.getReplyCode() == 550){
-						return ResponseFactory.jsonFTPResponse(Status.CONFLICT,
-								cl.getReplyCode(), cl.getReplyStrings());
-					}
-					return null;
-				})
-				.addAction(getFallbackHandler())
-				.execute();
+	@PUT
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
+	@Path("sendFile/{pathname}")
+	public Response sendFile(@PathParam("pathname")String pathname) throws  IOException{
+		
+		return Response.ok(this.ftp.sendFile(pathname),MediaType.APPLICATION_OCTET_STREAM).build();
 	}
+	
 }
+
 
 	
 	
