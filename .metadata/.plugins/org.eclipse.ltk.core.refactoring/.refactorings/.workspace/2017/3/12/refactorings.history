@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;car-tp2-jdk8_maven&apos;" deleteContents="false" description="Delete resource &apos;car-tp2-jdk8_maven&apos;" element1="/car-tp2-jdk8_maven" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1490006100391"/>
+</session>

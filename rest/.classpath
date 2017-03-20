@@ -99,5 +99,14 @@
 	<classpathentry kind="lib" path="C:/Users/Lupulus/CAR/rest/lib/gson-2.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Lupulus/CAR/rest/lib/spring-orm-4.0.3.RELEASE-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Lupulus/CAR/rest/lib/cxf-rt-frontend-jaxrs-3.1.10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-frontend-jaxrs-3.1.10.jar"/>
+	<classpathentry kind="lib" path="/home/m1/laval/Documents/M1S2/CAR/rest/lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/home/m1/laval/Documents/M1S2/CAR/rest/lib/cxf-rt-frontend-jaxrs-3.1.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

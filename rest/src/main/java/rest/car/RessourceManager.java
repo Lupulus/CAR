@@ -9,8 +9,8 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.ext.RuntimeDelegate;
 
 import main.java.rest.car.ressource.HelloWorldResource;
-import main.java.rest.car.ressource.TryRessource;
-import main.java.rest.car.ressource.UserRessource;
+import main.java.rest.car.ressource.DirRessource;
+import main.java.rest.car.ressource.HelloWorldResource;
 
 import org.apache.cxf.bus.spring.SpringBus;
 import org.apache.cxf.endpoint.Server;
@@ -35,8 +35,8 @@ public class RessourceManager {
 	 */
 	protected void addResources( List<Object> resources ) {
 		resources.add( new HelloWorldResource() );
-		resources.add( new TryRessource() );
-		resources.add( new UserRessource() );
+		resources.add( new DirRessource() );
+		resources.add( new HelloWorldResource() );
 	}
 	
 	/**
