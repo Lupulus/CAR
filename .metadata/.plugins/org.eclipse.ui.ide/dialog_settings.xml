@@ -5,12 +5,18 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/m1/laval/Documents/M1S2/gitMaster/Master1-Semestre2/CAR/TP02/ressources/car-tp2-jdk8"/>
 			<item value="/home/m1/laval/Documents/M1S2/gitMaster/Master1-Semestre2/CAR/TP02/baloup_oudjail_elkhatib"/>
 			<item value="/home/m1/laval/Documents/M1S2/CAR/car-tp2-jdk8"/>
 			<item value="/home/m1/laval/Documents/M1S2/CAR/rest"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 		</list>
 	</section>
 </section>
