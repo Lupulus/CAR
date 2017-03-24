@@ -1,0 +1,9 @@
+{
+  "port": 2121,
+  "users": {
+    "toto": {
+      "homeDirectory": "./target/homes/toto",
+      "password": "bidule"
+    }
+  }
+}
