@@ -1,0 +1,17 @@
+package system;
+
+import java.util.ArrayList;
+
+import actor.Noeud;
+import akka.actor.ActorSystem;
+
+public class System1 {
+	
+	private ArrayList<Noeud> actorsSyst1;
+	
+	public void create() {
+		ActorSystem system = ActorSystem.create("MySystem1"); 
+		//System.out.println("J'ecoute...");
+		//ActorRef greeter1 = system.actorOf( Props.create(Noeud.class), "greeter1" );
+	}
+}

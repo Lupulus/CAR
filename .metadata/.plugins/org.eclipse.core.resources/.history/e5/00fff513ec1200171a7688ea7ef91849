@@ -1,0 +1,10 @@
+package actor;
+
+public class Sender extends Actors {
+	
+	
+	@Override
+	public void onReceive(Object msg){
+		
+	}
+}

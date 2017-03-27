@@ -1,0 +1,22 @@
+import actor.NodeActor;
+import akka.actor.ActorRef;
+import akka.actor.ActorSelection;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+
+
+public class Main {
+
+	public static void main(String args[]){
+		ActorSystem system1 = ActorSystem.create("Dragostea");
+		//ActorSystem system2 = ActorSystem.create("DeinTi");
+		
+		
+		ActorRef sender1 = system1.actorOf( Props.create(NodeActor.class), "sender1" );
+	    ActorRef greeter1 = system1.actorOf( Props.create(NodeActor.class), "greeter1" );
+	    
+		ActorSelection selectGreeter1 = system1.actorSelection("akka.tcp://DeinTi@127.0.0.1:2552/user/greeter1");
+		selectGreeter1.tell(NodeActor.Msg.TRANSMIT, ActorRef.noSender());
+		    
+	} 
+}	

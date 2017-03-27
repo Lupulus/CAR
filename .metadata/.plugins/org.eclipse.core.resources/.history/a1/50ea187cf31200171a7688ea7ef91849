@@ -1,0 +1,14 @@
+package actor;
+
+import akka.actor.UntypedActor;
+
+public class Greeter extends UntypedActor{
+  public static enum Msg {
+	    CHILD1, CHILD2, PARENT, TRANSMIT, SENDBACK, GRAPH, DONE;
+  }
+	
+  @Override
+  public void onReceive(Object msg){
+	  
+  }
+}

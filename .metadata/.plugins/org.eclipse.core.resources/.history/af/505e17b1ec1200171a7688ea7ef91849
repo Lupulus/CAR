@@ -1,0 +1,11 @@
+package actor;
+
+public class Sender extends Actors {
+	
+	
+	@Override
+	public void onReceive(Object msg){
+		  System.out.println("J'ai reçu un accusé de " + getSender());
+
+	}
+}

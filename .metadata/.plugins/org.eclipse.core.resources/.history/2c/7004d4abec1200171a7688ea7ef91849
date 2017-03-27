@@ -1,0 +1,14 @@
+package actor;
+
+import akka.actor.Props;
+import akka.actor.UntypedActor;
+import akka.actor.ActorRef;
+
+
+public abstract class Actors extends UntypedActor{
+
+  @Override
+  public void onReceive(Object msg) {	  
+  }
+  
+}
