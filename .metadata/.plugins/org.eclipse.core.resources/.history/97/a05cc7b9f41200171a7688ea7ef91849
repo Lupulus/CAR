@@ -1,9 +1,0 @@
-import akka.actor.ActorSystem;
-
-
-public class Main {
-
-	public static void main(String args[]){
-		ActorSystem system1 = ActorSystem.create("truc drole");
-	} 
-}	
