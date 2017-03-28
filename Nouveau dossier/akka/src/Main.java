@@ -27,6 +27,7 @@ public class Main {
 	    acteur2.tell(acteur3, ActorRef.noSender());
 	    acteur2.tell(acteur4, ActorRef.noSender());
 	    
+	    acteur4.tell(acteur6, ActorRef.noSender());
 	    acteur5.tell(acteur6, ActorRef.noSender());
 	    
 	    acteur1.tell(NodeActor.Msg.TRANSMIT, ActorRef.noSender());
