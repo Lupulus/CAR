@@ -30,7 +30,7 @@ public class NodeActor extends UntypedActor{
 								   	}
 								   	alreadyReceivedTRANSMIT = true;
 								}else{
-									System.out.println("Message TRANSMIT déjà reçu sur acteur " + getSelf() +", renvoi d'un GRAPH");
+									System.out.println("Message TRANSMIT deja recu sur acteur " + getSelf() +", renvoi d'un GRAPH");
 									getSender().tell(Msg.GRAPH, ActorRef.noSender());
 								}
 								break;

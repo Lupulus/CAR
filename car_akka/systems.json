@@ -1,0 +1,160 @@
+{
+  "systems": {
+    "akka_reparti_syst1": {
+      "akkaConnectConfig": {
+        "host": "localhost",
+        "port": 2552
+      },
+      "nodes": [
+        {
+          "name": "act1",
+          "ConnectURL": null,
+          "successors": [
+            "act2",
+            "act5"
+          ]
+        },
+        {
+          "name": "act2",
+          "ConnectURL": "akka.tcp://tree_Connect_2@localhost:2553/user/act2",
+          "successors": []
+        },
+        {
+          "name": "act5",
+          "ConnectURL": null,
+          "successors": [
+            "act6"
+          ]
+        },
+        {
+          "name": "act6",
+          "ConnectURL": null,
+          "successors": []
+        }
+      ]
+    },
+    "loop_graph": {
+      "akkaConnectConfig": null,
+      "nodes": [
+        {
+          "name": "act1",
+          "ConnectURL": null,
+          "successors": [
+            "act2",
+            "act5",
+            "act4"
+          ]
+        },
+        {
+          "name": "act2",
+          "ConnectURL": null,
+          "successors": [
+            "act3",
+            "act4"
+          ]
+        },
+        {
+          "name": "act3",
+          "ConnectURL": null,
+          "successors": []
+        },
+        {
+          "name": "act4",
+          "ConnectURL": null,
+          "successors": [
+            "act4",
+            "act5"
+          ]
+        },
+        {
+          "name": "act5",
+          "ConnectURL": null,
+          "successors": [
+            "act6"
+          ]
+        },
+        {
+          "name": "act6",
+          "ConnectURL": null,
+          "successors": [
+            "act1",
+            "act3"
+          ]
+        }
+      ]
+    },
+    "akka_reparti_syst2": {
+      "akkaConnectConfig": {
+        "host": "localhost",
+        "port": 2553
+      },
+      "nodes": [
+        {
+          "name": "act2",
+          "ConnectURL": null,
+          "successors": [
+            "act3",
+            "act4"
+          ]
+        },
+        {
+          "name": "act3",
+          "ConnectURL": null,
+          "successors": []
+        },
+        {
+          "name": "act4",
+          "ConnectURL": null,
+          "successors": []
+        }
+      ]
+    },
+    "akka_base": {
+      "akkaConnectConfig": null,
+      "nodes": [
+        {
+          "name": "act1",
+          "ConnectURL": null,
+          "successors": [
+            "act2",
+            "act5"
+          ]
+        },
+        {
+          "name": "act2",
+          "ConnectURL": null,
+          "successors": [
+            "act3",
+            "act4"
+          ]
+        },
+        {
+          "name": "act3",
+          "ConnectURL": null,
+          "successors": []
+        },
+        {
+          "name": "act4",
+          "ConnectURL": null,
+          "successors": []
+        },
+        {
+          "name": "act5",
+          "ConnectURL": null,
+          "successors": [
+            "act6"
+          ]
+        },
+        {
+          "name": "act6",
+          "ConnectURL": null,
+          "successors": []
+        }
+      ]
+    },
+    "empty": {
+      "akkaConnectConfig": null,
+      "nodes": []
+    }
+  }
+}

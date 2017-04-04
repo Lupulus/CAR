@@ -16,7 +16,7 @@ public class Configuration {
 	 * not exist or it is invalid.
 	 * @param init the default values
 	 */
-	Configuration(Map<String, SystemConfiguration> conf) {
+	public Configuration(Map<String, SystemConfiguration> conf) {
 		systems = new HashMap<>(conf);
 	}
 	

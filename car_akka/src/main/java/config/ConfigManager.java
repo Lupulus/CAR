@@ -32,7 +32,7 @@ public class ConfigManager {
 				config = new Gson().fromJson(reader, Configuration.class);
 			} catch (Exception e) {
 				//Log.error("Config file not found or not valid. Generating default configuration... ");
-				config = defaultConfig();
+				//config = defaultConfig();
 				
 				try (FileWriter writer = new FileWriter(CONFIG_FILE, false)) {
 					new GsonBuilder().serializeNulls().setPrettyPrinting().create().toJson(config, writer);
@@ -49,7 +49,7 @@ public class ConfigManager {
 	 * Permet d'avoir une configuration globale par défault
 	 * @return La référence vers cette configuration par défault
 	 */
-	private static Configuration defaultConfig() {
+	/** private static Configuration defaultConfig() {
 		Map<String, SystemConfiguration> systems = new HashMap<>();
 
 		systems.put("tree_single", new SystemConfiguration(Arrays.asList(
@@ -88,7 +88,24 @@ public class ConfigManager {
 				null));
 		
 		return new Configuration(systems);
-	}
+	} **/
+	
+	
+	
+	public static String generateAkkaConnectConfig(String host, int port) {
+		return "akka {\n"
+				+ "  actor {\n"
+				+ "    provider = akka.remote.RemoteActorRefProvider\n"
+				+ "  }\n"
+				+ "  remote {\n"
+				+ "    enabled-transports = [\"akka.remote.netty.tcp\"]\n"
+				+ "    netty.tcp {\n"
+				+ "      hostname = \"" + host + "\"\n"
+				+ "      port = " + port + "\n"
+				+ "    }\n"
+				+ "  }\n"
+				+ "}\n";
+}
 	
 	private ConfigManager() {}
 }

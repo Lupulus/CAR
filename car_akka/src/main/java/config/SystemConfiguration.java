@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SystemConfiguration {
 	
-	private String akkaConfigFile;
+	private ConnectConfiguration akkaConnectConfig;
 
 	private List<NodeConfiguration> nodes;
 	
@@ -16,9 +16,9 @@ public class SystemConfiguration {
 	 * not exist or it is invalid.
 	 * @param init the default values
 	 */
-	SystemConfiguration(List<NodeConfiguration> init, String akkaConfFile) {
+	SystemConfiguration(List<NodeConfiguration> init, ConnectConfiguration akkaConnectConf) {
 		nodes = new ArrayList<>(init);
-		akkaConfigFile = akkaConfFile;
+		akkaConnectConfig = akkaConnectConf;
 	}
 	
 	/**
@@ -34,9 +34,14 @@ public class SystemConfiguration {
 		return Collections.unmodifiableList(nodes);
 	}
 	
-	public String getAkkaConfigFile() {
-		return akkaConfigFile;
-	}
+	/**
+	 * Retourne la configuration de la connextivité de ce système
+	 * @return La configuration de connexion, ou null si il n'y a pas
+	 * 		de connexion à configurer.
+	 */
+	public ConnectConfiguration getAkkaConnectConfig() {
+		return akkaConnectConfig;
+}
 	
 	
 }

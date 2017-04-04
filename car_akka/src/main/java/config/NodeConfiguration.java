@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NodeConfiguration {
 	private String name;
-	private String remoteURL;
+	private String connectURL;
 	private List<String> successors;
 
 
@@ -15,10 +15,10 @@ public class NodeConfiguration {
 	 * not exist or it is invalid.
 	 * @param init the default values
 	 */
-	NodeConfiguration(String n, String remote, List<String> s) {
+	NodeConfiguration(String n, String connect, List<String> s) {
 		name = n;
 		successors = new ArrayList<>(s);
-		remoteURL = remote;
+		connectURL = connect;
 	}
 	
 	
@@ -33,8 +33,8 @@ public class NodeConfiguration {
 		return name;
 	}
 	
-	public String getRemoteURL() {
-		return remoteURL;
+	public String getConnectURL() {
+		return connectURL;
 	}
 	
 	public List<String> getSuccessors() {
