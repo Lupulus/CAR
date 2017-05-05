@@ -1,0 +1,92 @@
+package car.tp4.servlet;
+
+import java.io.IOException;
+
+import javax.ejb.EJB;
+import javax.ejb.EJBException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import car.tp4.entity.Book;
+import car.tp4.entity.BookBean;
+import car.tp4.entity.Cart;
+import car.tp4.entity.CartBean;
+
+
+ /* Service permettant d'ajouter des livres à son panier.
+ * 
+ */
+@WebServlet("/add_to_cart")
+public class AddToCartServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Model, permet de faire les différentes intéractions avec des livres.
+	 */
+	@EJB
+	private BookBean bookBean;
+	
+	/**
+	 * Model, permet de faire les différentes intéractions avec des paniers.
+	 */
+	@EJB
+	private CartBean cartBean;
+	
+	
+	/**
+	 * Appelée lors d'une requête GET. Lorsque l'on consulte le service, elle affiche la page concernée.
+	 * @param request  Contient les attributs associés à la requête.
+	 * @param response Contient les attributs associés à la réponse.
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		long bookId = Long.parseLong(request.getParameter("id"));
+		Book b = bookBean.getById(bookId);
+		if (b == null) {
+			request.setAttribute("error", "This book does not exist.");
+			getServletContext().getRequestDispatcher("/jsp/error.jsp").forward(request, response);
+			return;
+		}
+		if (b.getStock() == 0) {
+			request.setAttribute("error", "There is no stock for this book");
+			getServletContext().getRequestDispatcher("/jsp/error.jsp").forward(request, response);
+			return;
+		}
+		
+		// gestion de la session
+		HttpSession session = request.getSession(true);
+		Cart cart;
+		Object cartIdObj = session.getAttribute("shoppingCart");
+		// on récupère l'instance du panier du client
+		if (cartIdObj != null) { // la session a déjà un panier associé
+			cart = cartBean.getById((Long)cartIdObj);
+		}
+		else {
+			cart = cartBean.newCart();
+			session.setAttribute("shoppingCart", cart.getId());
+		}
+		
+		
+		ShoppingCartContent cartContent = null;
+		try {
+			cartContent = shoppingCartContentBean.getFromShoppingCartAndBookId(cart.getId(), bookId);
+		} catch (EJBException e) { }
+		if (cartContent == null) {
+			cartContent = new ShoppingCartContent(cart.getId(), bookId, 1);
+			shoppingCartContentBean.addShoppingCartContent(cartContent);
+		}
+		else {
+			cartContent.setQuantity(cartContent.getQuantity() + 1);
+			shoppingCartContentBean.save(cartContent);
+		}
+		b.removeStock(1);
+		bookBean.save(b);
+		
+		response.sendRedirect("/cart");
+	}
+}

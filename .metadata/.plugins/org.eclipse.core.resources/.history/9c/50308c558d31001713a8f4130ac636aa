@@ -1,0 +1,81 @@
+package car.tp4.entity;
+
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
+/**
+ * Représente l'ensemble des éléments de panier d'achat.
+ */
+@Stateless
+@Local
+public class ContentBean {
+	
+	@PersistenceContext(unitName = "cart-content-pu")
+	private EntityManager entityManager;
+	
+	/**
+	 * Ajoute un élément de panier d'achat dans le gestionnaire d'entité
+	 * @param content l'élément de panier d'achat à enregistrer
+	 * @return une instance suivi par le gestionnaire d'entité, de l'élément de panier d'achat.
+	 */
+	public long addShoppingCartContent(ContentBean content) {
+		content = save(content);
+		return content.getId();
+	}
+	
+	/**
+	 * Sauvegarde / met à jour l'élément de panier d'achat passé en paramètre
+	 * @param scc l'élément de panier d'achat à sauvegarder
+	 * @return une instance suivi par le gestionnaire d'entité, de l'élément de panier d'achat.
+	 */
+	public ShoppingCartContent save(ShoppingCartContent scc) {
+		return entityManager.merge(scc);
+	}
+	
+	/**
+	 * Retourne l'élément de panier d'achat dont l'ID est passé en paramètre.
+	 * @param id l'ID de l'élément de panier d'achat à retourner
+	 * @return l'élément de panier d'achat correspondant à l'ID passé en paramètre,
+	 * ou null qi il n'y en a pas qui correspond.
+	 */
+	public ShoppingCartContent getById(long id) {
+		return entityManager.find(ShoppingCartContent.class, id);
+	}
+	
+	/**
+	 * Retourne tous les éléments de panier d'achat enregistrés.
+	 * @return une {@link List} d'élément de panier d'achat.
+	 */
+	public List<ShoppingCartContent> getAll() {
+		Query query = entityManager.createQuery("SELECT c FROM ShoppingCartContent as c");
+		return query.getResultList();
+	}
+	
+	/**
+	 * Retourne tous les éléments du panier d'achat dont l'ID (du panier d'achat, pas de l'élément)
+	 * est passé en paramètre.
+	 * @param scId 
+	 * @return le liste des élément de panier d'achat, du panier d'achat dont l'ID est passé en paramètre.
+	 */
+	public List<ShoppingCartContent> getAllFromShoppingCart(long scId) {
+		Query query = entityManager.createQuery("SELECT c FROM ShoppingCartContent as c WHERE c.shoppingCartId = :scId");
+		query.setParameter("scId", scId);
+		return query.getResultList();
+	}
+	
+	/**
+	 * Retourne l'élément de panier d'achat donc l'id de panier d'achat et l'id de livre est passé en paramètre.
+	 * @param scId l'id du panier d'achat
+	 * @param bId l'id du livre
+	 * @return l'élément de panier d'achat.
+	 */
+	public ShoppingCartContent getFromShoppingCartAndBookId(long scId, long bId) {
+		Query query = entityManager.createQuery("SELECT c FROM ShoppingCartContent as c WHERE c.shoppingCartId = :scId AND c.bookId = :bId");
+		query.setParameter("scId", scId);
+		query.setParameter("bId", bId);
+		return (ShoppingCartContent) query.getSingleResult();
+	}
+}

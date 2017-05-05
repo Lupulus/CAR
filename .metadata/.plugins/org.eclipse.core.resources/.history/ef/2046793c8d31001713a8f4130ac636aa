@@ -1,0 +1,5 @@
+package car.tp4.entity;
+
+public class ContentBean {
+
+}
